@@ -11,6 +11,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RacesComponent } from './pages/races/races.component';
 import { RaceResultsComponent } from './pages/race-results/race-results.component';
 import { CircuitsComponent } from './pages/circuits/circuits.component';
+import { SingupComponent } from './pages/singup/singup.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { CircuitsComponent } from './pages/circuits/circuits.component';
     RacesComponent,
     RaceResultsComponent,
     CircuitsComponent,
+    SingupComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
