@@ -1,26 +1,42 @@
- <div>
+ <div class="formulario">
     <form [formGroup]= "form" (submit)="sendData()" >
         <div>
-            <input type="text" name="fullname" placeholder="Full name" formControlName="name">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Full name</mat-label>
+                <input matInput placeholder="Ex. Jose Lopez"  type="text" name="fullname"  formControlName="name">
+              </mat-form-field>
+            <!-- <input type="text" name="fullname" placeholder="Full name" formControlName="name"> -->
         </div>
         <div>
-            <input type="text" name="username" placeholder="Username" formControlName = "username" >
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input type="text" name="username"  matInput placeholder="Ex. ElJoshep" formControlName = "username" >
+              </mat-form-field>
         </div>
         <div>
-            <input type="text" name="email" placeholder="Email" formControlName="email">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="text" name="email" matInput placeholder="Ex. jesus@mail.com" formControlName="email">
+             </mat-form-field>
         </div>
         <div>
-            <input [type]="showPassword ? 'text' : 'password'" name="password" placeholder="Password" formControlName="password">
-            <button (click)="toggleShowPassword()">{{showPassword ? 'Hide' :'Show'}}</button>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input [type]="showPassword ? 'text' : 'password'" name="password" matInput placeholder="Ex. pass123" formControlName="password">
+             </mat-form-field>
+             <mat-icon  matSuffix (click)="toggleShowPassword()">{{showPassword ? 'visivility_off' :'visibility'}}</mat-icon>
         </div>
         <div>
-            <input type="password" name="confirm_password" placeholder="Confirm password" formControlName="confirm_password" >
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" name="confirm_password" matInput placeholder="Confirm password" formControlName="confirm_password" >
+             </mat-form-field>
         </div>
-        <div>
-            <button [disabled]="form.invalid">Sing up</button>
+        <div class="">
+            <button  mat-raised-button color="accent" [disabled]="form.invalid">Sing up</button>
         </div>
         <span *ngIf="form.errors && form.errors['passwordMismatch']" >Passwords don't mathc</span>
-        <div>
+        <div class="account">
             Have an account <a routerLink="/login">Log in here</a>
         </div>
     </form>

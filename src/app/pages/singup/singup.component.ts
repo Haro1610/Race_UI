@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+//import { ErrorStateMatcher } from '@angular/material/core';
 
 
 @Component({
@@ -51,3 +52,4 @@ export class SingupComponent implements OnInit {
   }
 
 }
+

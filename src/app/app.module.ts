@@ -15,6 +15,7 @@ import { SingupComponent } from './pages/singup/singup.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
+//import { ErrorStateMatcher } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -35,8 +36,8 @@ import { MaterialModule } from './modules/material/material.module';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
-
+    MaterialModule,
+    //ErrorStateMatcher,
   ],
   providers: [],
   bootstrap: [AppComponent]
