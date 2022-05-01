@@ -13,6 +13,8 @@ import { RaceResultsComponent } from './pages/race-results/race-results.componen
 import { CircuitsComponent } from './pages/circuits/circuits.component';
 import { SingupComponent } from './pages/singup/singup.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modules/material/material.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { HeaderComponent } from './layout/header/header.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
 
   ],
   providers: [],
