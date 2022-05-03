@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   login(){
     console.log('Enviar los datos:',this.Username +""+ this.password);
    
-    this.router.navigate(['/races']);
+    this.router.navigate(['/home']);
 
     }
 

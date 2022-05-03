@@ -8,9 +8,16 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  // login(){
+  //   //console.log('Enviar los datos:',this.Username +""+ this.password);
+   
+  //   this.router.navigate(['/races']);
+
+  //   }
 
 }

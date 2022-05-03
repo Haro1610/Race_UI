@@ -23,8 +23,9 @@
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Password</mat-label>
                 <input [type]="showPassword ? 'text' : 'password'" name="password" matInput placeholder="Ex. pass123" formControlName="password">
+                <mat-icon  matSuffix (click)="toggleShowPassword()">{{showPassword ? 'visivility_off' :'visibility'}}</mat-icon>
              </mat-form-field>
-             <mat-icon  matSuffix (click)="toggleShowPassword()">{{showPassword ? 'visivility_off' :'visibility'}}</mat-icon>
+             <!-- <mat-icon  matSuffix (click)="toggleShowPassword()">{{showPassword ? 'visivility_off' :'visibility'}}</mat-icon> -->
         </div>
         <div>
             <mat-form-field class="example-full-width" appearance="fill">

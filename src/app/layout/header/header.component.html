@@ -1,5 +1,18 @@
 <p>
     <mat-toolbar color="accent">
-      <span>Karts Racing </span>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item routerLink="/home">
+          <mat-icon>home</mat-icon>
+          <span >Home</span>
+        </button>
+        <button mat-menu-item routerLink="/races">
+          <mat-icon>directions_car</mat-icon>
+          <span >Races</span>
+        </button>
+      </mat-menu>
+      <span>Karts Racing  </span>
     </mat-toolbar>
 </p>
