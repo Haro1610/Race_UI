@@ -8,6 +8,7 @@ import { RacesComponent } from './pages/races/races.component';
 import { RaceResultsComponent } from './pages/race-results/race-results.component';
 import { SingupComponent } from './pages/singup/singup.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CircuitsComponent } from './pages/circuits/circuits.component';
 
 const routes: Routes = [
   {path: '',redirectTo:'login', pathMatch:'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'users',component:UsersComponent},
   {path: 'drivers',component:DriversComponent},
   {path: 'races',component:RacesComponent},
+  {path: 'circuits',component:CircuitsComponent},
   {path: 'races-results',component:RaceResultsComponent},
   {path: '**',component:NotFoundComponent,pathMatch:'full'}
 ];
