@@ -22,6 +22,7 @@ const ELEMENT_DATA: Races[] = [
   {event: 'Carrera 12', date: '25-03-2022', pista: '1c'},
   {event: 'Carrera 13', date: '25-03-2022', pista: '2a'},
   { event: 'Carrera 114', date: '25-03-2022', pista: '1a'},
+  { event: 'Carrera 115', date: '25-03-2022', pista: '1a'},
 ];
 
 @Component({
@@ -34,7 +35,9 @@ export class RacesComponent implements OnInit {
   displayedColumns: string[] = [ 'event', 'date', 'pista'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor() {
+
+   }
 
   ngOnInit(): void {
   }
