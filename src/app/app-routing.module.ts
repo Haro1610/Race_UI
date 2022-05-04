@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'drivers',component:DriversComponent},
   {path: 'races',component:RacesComponent},
   {path: 'circuits',component:CircuitsComponent},
-  {path: 'races-results',component:RaceResultsComponent},
+  {path: 'races-results/:_id',component:RaceResultsComponent},
   {path: '**',component:NotFoundComponent,pathMatch:'full'}
 ];
 
