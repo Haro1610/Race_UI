@@ -16,6 +16,9 @@ import { HeaderComponent } from './layout/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { HomeComponent } from './pages/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
 //import { ErrorStateMatcher } from '@angular/material/core';
 
 @NgModule({
@@ -34,6 +37,7 @@ import { HomeComponent } from './pages/home/home.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,

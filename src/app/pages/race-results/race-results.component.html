@@ -20,15 +20,15 @@
           </ng-container> -->
         
           <!-- Name Column -->
-          <ng-container matColumnDef="posicion">
-            <th mat-header-cell *matHeaderCellDef>Posicion</th>
-            <td mat-cell *matCellDef="let element">{{element.posicion}} </td>
+          <ng-container matColumnDef="race_name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.results}} </td>
           </ng-container>
         
           <!-- Weight Column -->
           <ng-container matColumnDef="piloto">
             <th mat-header-cell *matHeaderCellDef>Piloto</th>
-            <td mat-cell *matCellDef="let element"> {{element.piloto}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.race_name}} </td>
           </ng-container>
         
           <!-- Symbol Column -->
