@@ -10,7 +10,7 @@ import { Users } from 'src/app/shared/services/interfaces/users';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  //displayedColumns: string[] = [ 'race_name', 'results', 'number_of_laps','date'];
+  displayedColumns: string[] = [ 'name', 'email', 'number'];
   dataSource: Users[] = [];
   public email : string = '';
 

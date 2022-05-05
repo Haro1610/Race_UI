@@ -31,6 +31,8 @@ export class RaceResultsComponent implements OnInit {
           this.raceResultService.getResults(this.current_race).subscribe( a =>{
             this.dataSource = [a];
         });
+
+        
       });
   }
 
