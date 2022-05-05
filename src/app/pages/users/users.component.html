@@ -1,1 +1,51 @@
-<p>users works!</p>
+
+
+<mat-toolbar color="warn">
+    <mat-toolbar-row>
+        <span class="span" >Users</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  
+  <div class="tabla" >
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Position Column -->
+          <!-- <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container> -->
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>  Event</th>
+            <td mat-cell *matCellDef="let element">{{element.name}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> date </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="number">
+            <th mat-header-cell *matHeaderCellDef> Pista </th>
+            <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+          </ng-container>
+  
+  
+          
+  
+          <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  </div>
+  
+    
+    
