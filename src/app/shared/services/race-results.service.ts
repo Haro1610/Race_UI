@@ -12,8 +12,6 @@ export class RaceResultsService {
   constructor(private httpClient: HttpClient) { }
 
   getResults(id: string): Observable<RaceResults>{
-    console.log("preparando el get")
-    console.log(id)
     const url = 'http://localhost:3000/api/race_results/'+id;
     console.log(url)
     console.log(this.httpClient.get<RaceResults>(url))

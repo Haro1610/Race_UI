@@ -22,29 +22,25 @@
           <!-- Name Column -->
           <ng-container matColumnDef="race_name">
             <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.race_name}} </td>
+          </ng-container>
+
+          <!--  Column -->
+          <ng-container matColumnDef="results">
+            <th mat-header-cell *matHeaderCellDef>Results</th>
             <td mat-cell *matCellDef="let element">{{element.results}} </td>
           </ng-container>
         
           <!-- Weight Column -->
-          <ng-container matColumnDef="piloto">
-            <th mat-header-cell *matHeaderCellDef>Piloto</th>
-            <td mat-cell *matCellDef="let element"> {{element.race_name}} </td>
+          <ng-container matColumnDef="number_of_laps">
+            <th mat-header-cell *matHeaderCellDef>Number of laps</th>
+            <td mat-cell *matCellDef="let element"> {{element.number_of_laps}} </td>
           </ng-container>
         
           <!-- Symbol Column -->
-          <ng-container matColumnDef="l1">
-            <th mat-header-cell *matHeaderCellDef>l1</th>
-            <td mat-cell *matCellDef="let element"> {{element.l1}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="l2">
-            <th mat-header-cell *matHeaderCellDef>l2</th>
-            <td mat-cell *matCellDef="let element"> {{element.l2}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="l3">
-            <th mat-header-cell *matHeaderCellDef> l3 </th>
-            <td mat-cell *matCellDef="let element"> {{element.l3}} </td>
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
           </ng-container>
         
           <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
