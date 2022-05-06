@@ -1,4 +1,4 @@
-export interface CircuitsInterface {
+export interface Circuits {
     _id: string,
     name: string,
     address: string,

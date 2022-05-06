@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CircuitsService } from 'src/app/shared/services/circuits.service';
-import { CircuitsInterface } from 'src/app/shared/services/interfaces/circuits-interface';
+import { Circuits } from 'src/app/shared/services/interfaces/circuits-interface';
 
 @Component({
   selector: 'app-circuits',
@@ -10,10 +10,10 @@ import { CircuitsInterface } from 'src/app/shared/services/interfaces/circuits-i
 })
 export class CircuitsComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'name', 'address', 'pista','phone_number','circuit_distance'];
-  dataSource: CircuitsInterface[] = [];
+  displayedColumns: string[] = [ 'name','address','circuit_distance','phone_number'];
+  dataSource: Circuits[] = [];
 
-  public circuits: string = '';
+  //public circuits: string = '';
 
   constructor(private circuitsService : CircuitsService ) { }
 
