@@ -16,4 +16,5 @@ export class RaceResultsService {
     console.log(url)
     console.log(this.httpClient.get<RaceResults>(url))
     return this.httpClient.get<RaceResults>(url);
-  }}
+  }
+}
