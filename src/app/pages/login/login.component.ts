@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-
+import { LoginService } from 'src/app/shared/services/login.service';
+import { Login } from 'src/app/shared/services/interfaces/login';
 
 @Component({
   selector: 'app-login',
@@ -11,23 +12,20 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   [x: string]: any;
 
-  Username: string = '';
+  email: string = '';
   password: string = '';
-
-  constructor(private router: Router) { }
+  constructor(private LoginService:LoginService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   login(){
-    console.log('Enviar los datos:',this.Username +""+ this.password);
-/*this.Router.params.subscribe( params => {
-      this.current_race = params['_id'];
-        this.raceResultService.getResults(this.current_race).subscribe( a =>{
-          this.dataSource = [a];
+    this.LoginService.DBLogIn(this.email,this.password).subscribe( a => {
+        console.log("iniciando sesion")
+        //console.log(a)
+        this.router.navigate(['/home']);
       });
-    */
-    
-    this.router.navigate(['/home']);
     }
 }
+
+

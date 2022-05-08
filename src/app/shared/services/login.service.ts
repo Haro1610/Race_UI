@@ -11,10 +11,8 @@ import { Login } from './interfaces/login';
 export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
-  DBLogIn(email: string, password: string): Observable<Login>{
+  DBLogIn(email: string, password: string): Observable<any>{
     const url = 'http://localhost:3000/api/Login/';
-    console.log(url);
-    console.log(this.httpClient.post<Login>(url,{email: email, password: password}));
-    return this.httpClient.post<Login>(url,{email: email, password: password});
+    return this.httpClient.post<any>(url,{email: email, password: password});
   }
 }
