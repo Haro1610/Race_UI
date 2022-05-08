@@ -1,13 +1,13 @@
-<mat-toolbar color="warn">
+<!-- <mat-toolbar color="warn">
     <mat-toolbar-row>
         <span class="span" >Circuits</span>
     </mat-toolbar-row>
-  </mat-toolbar>
+  </mat-toolbar> -->
 
 
 
 
-   <mat-grid-list cols="2" rowHeight="2:1">
+   <!-- <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile>
             <mat-card class="example-card">
               <img mat-card-image src="https://www.elviajerofisgon.com/wp-content/uploads/2016/11/2-15.jpg"
@@ -33,19 +33,48 @@
     <mat-grid-tile>6</mat-grid-tile>
     <mat-grid-tile>7</mat-grid-tile>
     <mat-grid-tile>8</mat-grid-tile>
-  </mat-grid-list> 
+  </mat-grid-list>  -->
+
+
+  <ngb-carousel >
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="700" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h2 >First slide label</h2>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="https://www.dondeir.com/wp-content/uploads/2021/04/kbr-foto-1.jpg" height="700" alt="Random second slide">
+      </div>
+      <div class="carousel-caption">
+        <h2>Second slide label</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="https://zonaguadalajara.com/wp-content/uploads/2021/08/KartDromo-1280x720.jpg" height="700" alt="Random third slide">
+      </div>
+      <div class="carousel-caption">
+        <h2>Third slide label</h2>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+ 
 
 
   <div class="tabla" >
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-     
-      
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
+        
+         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Name</th>
           <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-          
         </ng-container>
       
         <ng-container matColumnDef="address">
@@ -66,8 +95,8 @@
         
 
         <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  -->
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-</div>
+      </table> 
+</div>   
