@@ -1,11 +1,13 @@
 table {
-    width: 80%;
+    width: 100%;
     align-items: center;
   }
 
 .tabla{
     //text-align: center;
-    padding-left: 20%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding-left: 5%;
     padding-right: 5%;
 }
 
@@ -14,7 +16,7 @@ table {
   margin: auto;
   padding-top: 0%;
 }
-.mat-toolbar-row{
+.header{
   margin-top: 0%;
   background-color:rgb(43, 226, 119);
   color: black;

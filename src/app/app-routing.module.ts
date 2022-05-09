@@ -10,10 +10,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { CircuitsComponent } from './pages/circuits/circuits.component';
 
 const routes: Routes = [
-  {path: '',redirectTo:'login', pathMatch:'full'},
+  {path: '',redirectTo:'home', pathMatch:'full'},
+  {path:'home',component:HomeComponent},
   {path: 'login',component:LoginComponent},
   {path:'singup',component:SingupComponent},
-  {path:'home',component:HomeComponent},
   {path: 'users',component:UsersComponent},
   {path: 'races',component:RacesComponent},
   {path: 'circuits',component:CircuitsComponent},

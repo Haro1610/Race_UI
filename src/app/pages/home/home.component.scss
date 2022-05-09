@@ -35,13 +35,17 @@
     font-size:xx-large;
     font-style: oblique;
     color: rgb(73, 197, 73);
+    margin: 5px;
   }
   p{
     color: rgb(255, 255, 255);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-decoration: wavy;
     font-style: italic;
     font-size: x-large;
     line-height: normal;
+    padding: 5px;
+    margin: 5px;
   }
 
   div.polaroid {
@@ -58,3 +62,10 @@
     text-align: center;
     padding: 10px 20px;
   }
+
+.carousel-caption{
+  margin: 20px;
+  margin-left: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
