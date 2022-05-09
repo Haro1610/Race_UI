@@ -7,9 +7,9 @@ export class AuthServiceService {
 
   constructor() { }
 
-  save(token: string){
-    console.log(token)
-    localStorage.setItem('token', token)
+  save(token: string,email: string){
+    localStorage.setItem('token', token);
+    localStorage.setItem('email', email);
   }
 
   get(): string{

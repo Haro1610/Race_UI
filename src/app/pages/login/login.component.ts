@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         console.log("iniciando sesion")
         console.log(res)
         //console.log(a)
-        this.authService.save(res.token)
+        this.authService.save(res.token,this.email)
         this.router.navigate(['/races']);
       });
       
