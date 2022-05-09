@@ -26,4 +26,6 @@ export class LoginService {
     const url = 'http://localhost:3000/api/Login/';
     return this.httpClient.post<any>(url,{email: email, password: password});
   }
+
+
 }

@@ -15,4 +15,7 @@ export class AuthServiceService {
   get(): string{
     return localStorage.getItem('token') || '';
   }
+  logOut(){
+    localStorage.clear();
+  }
 }
