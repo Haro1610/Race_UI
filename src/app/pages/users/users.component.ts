@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { UsersService } from 'src/app/shared/services/users.service'; 
 import { Users } from 'src/app/shared/services/interfaces/users'; 
+import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +15,11 @@ export class UsersComponent implements OnInit {
   dataSource: Users[] = [];
   public email : string = '';
 
-  constructor(private Router : ActivatedRoute, private UsersService : UsersService ) { }
+  constructor(private Router : ActivatedRoute, private UsersService : UsersService,private auth: AuthServiceService, private router: Router) { 
+    if (!auth.get()){
+      this.router.navigate(['/home']);
+    } 
+  }
 
   ngOnInit(): void {
 

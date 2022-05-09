@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CircuitsService } from 'src/app/shared/services/circuits.service';
 import { Circuits } from 'src/app/shared/services/interfaces/circuits-interface';
+import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 
 @Component({
   selector: 'app-circuits',
@@ -16,7 +18,11 @@ export class CircuitsComponent implements OnInit {
 
   //public circuits: string = '';
 
-  constructor(private circuitsService : CircuitsService ) { }
+  constructor(private circuitsService : CircuitsService, private auth: AuthServiceService, private router: Router) { 
+    if (!auth.get()){
+      this.router.navigate(['/home']);
+    } 
+  }
 
   ngOnInit(): void {
     this.circuitsService.getCircuits().subscribe(a =>{

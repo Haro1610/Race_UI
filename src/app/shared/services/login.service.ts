@@ -11,6 +11,17 @@ import { Login } from './interfaces/login';
 export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
+  /*LOG(email: string, password: string) : Promise<any>{
+      return new Promise((res,err) =>{
+        const url = 'http://localhost:3000/api/Login/';
+        console.log(this.httpClient.post<any>(url,{email: email, password: password}))
+        res( {return : this.httpClient.post<any>(url,{email: email, password: password})
+      }); 
+  })
+}
+  */
+
+  
   DBLogIn(email: string, password: string): Observable<any>{
     const url = 'http://localhost:3000/api/Login/';
     return this.httpClient.post<any>(url,{email: email, password: password});

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RacesService} from '../../shared/services/races.service'
-
 import { Races} from '../../shared/services/interfaces/races';
+import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 /*export interface Races {
   event: string;
   //position: number;
@@ -23,7 +24,10 @@ export class RacesComponent implements OnInit {
   closed_events: Races[] = [];
   public current_race: string = '';
 
-  constructor(private racesService: RacesService) {
+  constructor(private racesService: RacesService,private auth: AuthServiceService, private router: Router) { 
+    if (!auth.get()){
+      this.router.navigate(['/home']);
+    }
   }
   
   
