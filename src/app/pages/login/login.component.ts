@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(){
+  login(): void{
     this.LoginService.DBLogIn(this.email,this.password).subscribe( res => {
         console.log("iniciando sesion")
         console.log(res)
