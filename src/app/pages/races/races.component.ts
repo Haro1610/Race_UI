@@ -18,19 +18,25 @@ import { Races} from '../../shared/services/interfaces/races';
 })
 export class RacesComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'event', 'date', 'pista','laps','drivers'];
+  displayedColumns: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity'];
   dataSource: Races[] = [];
-
+  closed_events: Races[] = [];
   public current_race: string = '';
 
   constructor(private racesService: RacesService) {
-   }
+  }
   
   
 
   ngOnInit(): void {
       this.racesService.getRaces().subscribe(a =>{
         this.dataSource = a;
+        this.closed_events = this.dataSource.filter( a =>{
+          return a.status === 'closed';
+      });        
+        this.dataSource = this.dataSource.filter( a =>{
+            return a.status === 'open';
+        });
       });
 
   }

@@ -4,5 +4,7 @@ export interface Races{
     number_of_laps: number,
     date: string,
     circuit:string,
-    drivers: string[]
+    drivers: string[],
+    capacity: number,
+    status: string
 }
