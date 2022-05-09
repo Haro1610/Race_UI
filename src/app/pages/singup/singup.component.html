@@ -2,13 +2,6 @@
     <form [formGroup]= "form" (submit)="sendData()" >
         <div>
             <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Full name</mat-label>
-                <input matInput placeholder="Ex. Jose Lopez"  type="text" name="fullname"  formControlName="name">
-              </mat-form-field>
-            <!-- <input type="text" name="fullname" placeholder="Full name" formControlName="name"> -->
-        </div>
-        <div>
-            <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Username</mat-label>
                 <input type="text" name="username"  matInput placeholder="Ex. ElJoshep" formControlName = "username" >
               </mat-form-field>
@@ -34,7 +27,7 @@
              </mat-form-field>
         </div>
         <div class="">
-            <button  mat-raised-button color="accent" [disabled]="form.invalid" routerLink="/races">Sing up</button>
+            <button  mat-raised-button color="accent" [disabled]="form.invalid">Sing up</button>
         </div>
         <span *ngIf="form.errors && form.errors['passwordMismatch']" >Passwords don't mathc</span>
         <div class="account">

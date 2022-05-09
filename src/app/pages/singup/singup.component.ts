@@ -17,7 +17,6 @@ export class SingupComponent implements OnInit {
 
   constructor(private router: Router,private formBuilder: FormBuilder ) { 
     this.form = this.formBuilder.group({
-      name: ['',Validators.required],
       username: ['',Validators.required],
       email: ['',[Validators.required,Validators.email]],
       password: ['',[Validators.required,Validators.minLength(4)]],
@@ -36,8 +35,12 @@ export class SingupComponent implements OnInit {
   }
 
   sendData(){
-    console.log("Datos formulario"+this.formBuilder.group.name);
-    this.router.navigate(['/races']);
+    if(this.form.valid){
+      const {username,email,password,confirm_password} = this.form.getRawValue();
+      console.log(username,email,password,confirm_password)  
+    }
+    
+    //this.router.navigate(['/races']);
 
   }
 
