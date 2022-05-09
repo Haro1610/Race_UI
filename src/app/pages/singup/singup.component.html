@@ -34,7 +34,7 @@
              </mat-form-field>
         </div>
         <div class="">
-            <button  mat-raised-button color="accent" [disabled]="form.invalid">Sing up</button>
+            <button  mat-raised-button color="accent" [disabled]="form.invalid" routerLink="/races">Sing up</button>
         </div>
         <span *ngIf="form.errors && form.errors['passwordMismatch']" >Passwords don't mathc</span>
         <div class="account">

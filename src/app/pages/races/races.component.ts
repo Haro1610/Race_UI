@@ -18,7 +18,9 @@ import { Races} from '../../shared/services/interfaces/races';
 })
 export class RacesComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity'];
+  displayedColumns: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity','status'];
+  displayed: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity','status'];
+  
   dataSource: Races[] = [];
   closed_events: Races[] = [];
   public current_race: string = '';
@@ -40,5 +42,7 @@ export class RacesComponent implements OnInit {
       });
 
   }
+
+
 
 }
