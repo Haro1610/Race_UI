@@ -15,6 +15,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  LogOut(): void {
+    console.log("adios")
+    this.auth.logOut();
+    this.router.navigate(['/home'])
+  }
+
   // login(){
   //   //console.log('Enviar los datos:',this.Username +""+ this.password);
    

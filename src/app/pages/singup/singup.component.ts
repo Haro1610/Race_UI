@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { SignupService } from 'src/app/shared/services/signup.service';
+import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
+
+
 //import { ErrorStateMatcher } from '@angular/material/core';
 
 
@@ -15,7 +20,7 @@ export class SingupComponent implements OnInit {
   showPassword: boolean = false;
 
 
-  constructor(private router: Router,private formBuilder: FormBuilder ) { 
+  constructor(private router: Router,private formBuilder: FormBuilder, private sign_up : SignupService, private auth: AuthServiceService) { 
     this.form = this.formBuilder.group({
       username: ['',Validators.required],
       email: ['',[Validators.required,Validators.email]],
@@ -37,9 +42,16 @@ export class SingupComponent implements OnInit {
   sendData(){
     if(this.form.valid){
       const {username,email,password,confirm_password} = this.form.getRawValue();
-      console.log(username,email,password,confirm_password)  
-    }
+      this.sign_up.Sign_up(username,email,password).subscribe( res => {
+        console.log("Registrando nuevo usuario")
+        console.log(res)
+        //console.log(a)
+        this.auth.save(res.token,email)
+        this.router.navigate(['/races']);
+      });
+
     
+    }
     //this.router.navigate(['/races']);
 
   }
