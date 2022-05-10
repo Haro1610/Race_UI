@@ -21,6 +21,9 @@ export class SingupComponent implements OnInit {
 
 
   constructor(private router: Router,private formBuilder: FormBuilder, private sign_up : SignupService, private auth: AuthServiceService) { 
+    if (auth.get()){
+      this.router.navigate(['/races']);
+    } 
     this.form = this.formBuilder.group({
       username: ['',Validators.required],
       email: ['',[Validators.required,Validators.email]],
