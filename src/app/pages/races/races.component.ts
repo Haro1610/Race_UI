@@ -26,6 +26,7 @@ export class RacesComponent implements OnInit {
   closed_events: Races[] = [];
   private current_race: string = '';
   private hoy: Date = new Date();
+  
 
   constructor(private racesService: RacesService,private auth: AuthServiceService, private router: Router) { 
     if (!auth.get()){
@@ -35,14 +36,9 @@ export class RacesComponent implements OnInit {
   
   stringToDate(fecha:string)
   {
-          const [day,month, year] = fecha.split('-');
-          console.log(month); // 👉️ "07"
-          console.log(day); // 👉️ "21"
-          console.log(year); // 👉️ "2024"
-
-          const formatedDate = new Date(+year, +month - 1, +day);
-            return formatedDate;
-  }
+    const [day,month, year] = fecha.split('-');
+    const formatedDate = new Date(+year, +month - 1, +day);
+    return formatedDate;}
 
 
   ngOnInit(): void {
