@@ -24,7 +24,8 @@ export class RacesComponent implements OnInit {
   
   dataSource: Races[] = [];
   closed_events: Races[] = [];
-  public current_race: string = '';
+  private current_race: string = '';
+  private hoy: Date = new Date();
 
   constructor(private racesService: RacesService,private auth: AuthServiceService, private router: Router) { 
     if (!auth.get()){
@@ -32,20 +33,33 @@ export class RacesComponent implements OnInit {
     }
   }
   
-  
+  stringToDate(fecha:string)
+  {
+          const [day,month, year] = fecha.split('-');
+          console.log(month); // 👉️ "07"
+          console.log(day); // 👉️ "21"
+          console.log(year); // 👉️ "2024"
+
+          const formatedDate = new Date(+year, +month - 1, +day);
+            return formatedDate;
+  }
+
 
   ngOnInit(): void {
       this.racesService.getRaces().subscribe(a =>{
         this.dataSource = a;
         this.closed_events = this.dataSource.filter( a =>{
-          return a.status === 'closed';
+          return a.status === 'closed'  &&  this.stringToDate(a.date) > this.hoy ;
       });        
         this.dataSource = this.dataSource.filter( a =>{
-            return a.status === 'open';
+          //console.log("probando :" + this.stringToDate(a.date))
+          console.log("contra:"+ this.hoy)
+          return a.status === 'open'  &&  this.stringToDate(a.date) > this.hoy ;
         });
       });
 
   }
+
 
 
 
