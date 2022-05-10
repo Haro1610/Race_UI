@@ -64,12 +64,13 @@ table {
 
 }
 
-.div{
+.center-car{
   margin-left: auto;
   margin-right: auto;
 }
 ngb-carousel {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 95%;
   padding: 10px;
 }
