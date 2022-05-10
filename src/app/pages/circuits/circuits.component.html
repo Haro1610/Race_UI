@@ -36,19 +36,22 @@
   </mat-grid-list>  -->
 
 
-  <ngb-carousel >
-    <ng-template *ngFor="let circuit of dataSource"  ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="700" width="1250" alt="Random first slide">
-      </div>
-      <div class="carousel-caption">
-        <h1 >{{circuit.name}}</h1>
-        <p>{{circuit.circuit_distance}}</p>
-        <p>{{circuit.address}}</p>
-        <p><a class="btn btn-lg btn btn-success" routerLink="/races">Unete a una carrera</a></p>
-      </div>
-    </ng-template>
-  </ngb-carousel>
+  
+  <div>
+    <ngb-carousel >
+      <ng-template *ngFor="let circuit of dataSource"  ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="700" width="1250" alt="Random first slide">
+        </div>
+        <div class="carousel-caption">
+          <h1 >{{circuit.name}}</h1>
+          <p>{{circuit.circuit_distance}}</p>
+          <p>{{circuit.address}}</p>
+          <p><a class="btn btn-lg btn btn-success" routerLink="/races">Unete a una carrera</a></p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
 
  
 
