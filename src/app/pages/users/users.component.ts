@@ -11,7 +11,7 @@ import { AuthServiceService } from 'src/app/shared/services/auth-service.service
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = [ 'name', 'email', 'number'];
+  displayedColumns: string[] = [ 'name', 'email', 'number','editar'];
   dataSource: Users[] = [];
   public email : string = '';
 
