@@ -4,21 +4,38 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/shared/services/users.service'; 
 import { Users } from 'src/app/shared/services/interfaces/users'; 
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
+
+  //selector: 'ngbd-modal-content',
+  template: `
+    <div class="modal-header">
+      <h4 class="modal-title">Hi there!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <p>Hello, {{name}}!</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>`
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = [ 'name', 'email', 'number','editar'];
+  displayedColumns: string[] = [ 'name', 'email', 'number','editar','eliminar'];
   dataSource: Users[] = [];
   public email : string = '';
 
-  constructor(private Router : ActivatedRoute, private UsersService : UsersService,private auth: AuthServiceService, private router: Router) { 
+  constructor(private Router : ActivatedRoute, private UsersService : UsersService,
+    private auth: AuthServiceService, private router: Router,config: NgbModalConfig, private modalService: NgbModal) { 
     if (!auth.get()){
       this.router.navigate(['/home']);
     } 
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
   ngOnInit(): void {
@@ -38,4 +55,11 @@ export class UsersComponent implements OnInit {
     //this.dataSource = ELEMENT_DATA;
   }
 
+  open(content: any) {
+    this.modalService.open(content);
+  }
+
+  
+
 }
+
