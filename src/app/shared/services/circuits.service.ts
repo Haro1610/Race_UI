@@ -22,10 +22,11 @@ export class CircuitsService {
     const url = 'http://localhost:3000/api/circuits/'+id;
     return this.httpClient.delete<Circuits>(url);
   }  
-  updateCircuit(name:string, description:string, address:string, phone_number:number, circuit_distance:string): Observable<Circuits>{
+  updateCircuit(id:string,name:string, description:string, address:string, phone_number:number, circuit_distance:string): Observable<Circuits>{
     const url = 'http://localhost:3000/api/circuits/';
     return this.httpClient.put<Circuits>(url,
-      {name:name,
+      {id:id,
+      name:name,
       description:description,
       address:address,
       phone_number:phone_number,

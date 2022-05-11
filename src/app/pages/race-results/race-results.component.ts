@@ -5,9 +5,7 @@ import { Router } from '@angular/router';
 import { RaceResultsService } from 'src/app/shared/services/race-results.service';
 import { RaceResults } from 'src/app/shared/services/interfaces/race-results';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
-const ELEMENT_DATA: RaceResults[] = [
-  {_id: '1', results : '1 CQ, 2 VQ 3 AR', number_of_laps: 3,  race_id: "2",race_name: 'Carrerota',date: '1:40'},
-];
+const ELEMENT_DATA: RaceResults[] = [];
 
 @Component({
   selector: 'app-race-results',
