@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { RacesService} from '../../shared/services/races.service'
 import { Races} from '../../shared/services/interfaces/races';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+
 /*export interface Races {
   event: string;
   //position: number;
@@ -19,19 +22,32 @@ import { AuthServiceService } from 'src/app/shared/services/auth-service.service
 })
 export class RacesComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity','status'];
-  displayed: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity','status'];
+  displayedColumns: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity','status','editar','eliminar'];
+  displayed: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity','status','editar','eliminar'];
   
   dataSource: Races[] = [];
   closed_events: Races[] = [];
   private current_race: string = '';
   private hoy: Date = new Date();
+  form: FormGroup;
   
 
-  constructor(private racesService: RacesService,private auth: AuthServiceService, private router: Router) { 
+  constructor(private racesService: RacesService,private auth: AuthServiceService, 
+    private router: Router,private formBuilder: FormBuilder,config: NgbModalConfig, 
+    private modalService: NgbModal) { 
     if (!auth.get()){
       this.router.navigate(['/home']);
     }
+    this.form = this.formBuilder.group({
+      name: [],
+      number_of_laps: [],
+      date: [],
+      circuit: [],
+      drivers: [],
+      capacity:[],
+      status:[],
+    }
+    );
   }
   
   stringToDate(fecha:string)
@@ -54,6 +70,21 @@ export class RacesComponent implements OnInit {
         });
       });
   }
+
+  open(content: any) {
+    this.modalService.open(content);
+  }
+
+  sendData(its_new:boolean){
+    if(this.form.valid){
+      const {name,
+        number_of_laps,date,circuit,drivers,capacity,status,} = this.form.getRawValue()
+      console.log('Enviar datos',name,number_of_laps,date,circuit,drivers,capacity,status);
+    } else{
+      console.log('Error, faltan datos',this.form);
+    }
+  }
+
 
 
 
