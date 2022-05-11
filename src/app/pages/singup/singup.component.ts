@@ -20,7 +20,8 @@ export class SingupComponent implements OnInit {
   showPassword: boolean = false;
 
 
-  constructor(private router: Router,private formBuilder: FormBuilder, private sign_up : SignupService, private auth: AuthServiceService) { 
+  constructor(private router: Router,private formBuilder: FormBuilder, 
+    private sign_up : SignupService, private auth: AuthServiceService) { 
     if (auth.get()){
       this.router.navigate(['/races']);
     } 
