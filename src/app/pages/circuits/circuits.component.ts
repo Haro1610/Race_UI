@@ -39,6 +39,14 @@ export class CircuitsComponent implements OnInit {
     this.modalService.open(content);
   }
 
+  delete(id :string){
+    console.log("vamos a borrar a :" + id)
+    this.circuitsService.deleteCircuit(id).subscribe(a => {
+      console.log(a)
+    });
+    //this.router.navigate(['/users'])
+  }
+
 }
 // import { Component } from '@angular/core';
 

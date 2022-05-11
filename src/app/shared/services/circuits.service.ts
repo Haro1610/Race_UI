@@ -17,4 +17,9 @@ export class CircuitsService {
     console.log(this.httpClient.get<Circuits[]>(url))
     return this.httpClient.get<Circuits[]>(url);
   }
+  deleteCircuit(id: string): Observable<Circuits>{
+    console.log("preparando para eliminar");
+    const url = 'http://localhost:3000/api/circuits/'+id;
+    return this.httpClient.delete<Circuits>(url);
+  } 
 }

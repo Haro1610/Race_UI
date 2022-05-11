@@ -46,13 +46,11 @@ export class UsersComponent implements OnInit {
       this.UsersService.getUsers().subscribe( a =>{
         this.dataSource = a;
     });
-      console.log(this.dataSource)
       this.dataSource = this.dataSource.filter( a =>{
           a.email = this.email;
       })
       console.log(this.dataSource)
     
-    //this.dataSource = ELEMENT_DATA;
   }
 
 
