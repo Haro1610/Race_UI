@@ -53,7 +53,6 @@ export class RacesComponent implements OnInit {
           return a.status === 'open'  &&  this.stringToDate(a.date) > this.hoy ;
         });
       });
-
   }
 
 

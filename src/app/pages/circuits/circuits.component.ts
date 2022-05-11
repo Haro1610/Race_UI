@@ -28,11 +28,15 @@ export class CircuitsComponent implements OnInit {
     config.keyboard = false; 
   }
 
-  ngOnInit(): void {
+  refresh(): void {
     this.circuitsService.getCircuits().subscribe(a =>{
       this.dataSource = a;
     });
 
+  }
+
+  ngOnInit(): void {
+    this.refresh();
   }
 
   open(content: any) {
@@ -43,9 +47,11 @@ export class CircuitsComponent implements OnInit {
     console.log("vamos a borrar a :" + id)
     this.circuitsService.deleteCircuit(id).subscribe(a => {
       console.log(a)
+      this.refresh();
     });
     //this.router.navigate(['/users'])
   }
+  
 
 }
 // import { Component } from '@angular/core';

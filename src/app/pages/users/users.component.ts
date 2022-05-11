@@ -52,30 +52,12 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.Router.params.subscribe( params => {
-        this.email = params['_id']
-      });
-      this.UsersService.getUsers().subscribe( a =>{
-        this.dataSource = a;
-    });
-      this.dataSource = this.dataSource.filter( a =>{
-          a.email = this.email;
-      })
+      this.refresh();
       console.log(this.dataSource)
     
   }
 
-
-
-  open(content: any) {
-    this.modalService.open(content);
-  }
-
-  delete(email :string){
-    console.log("vamos a borrar a :" + email)
-    this.UsersService.deleteUser(email).subscribe( a =>{
-      console.log(a)
-    })
+  refresh(){
     this.Router.params.subscribe( params => {
       this.email = params['_id']
     });
@@ -84,6 +66,17 @@ export class UsersComponent implements OnInit {
     });
     this.dataSource = this.dataSource.filter( a =>{
         a.email = this.email;
+    });
+  }
+
+  open(content: any) {
+    this.modalService.open(content);
+  }
+
+  delete(email :string){
+    console.log("vamos a borrar a :" + email)
+    this.UsersService.deleteUser(email).subscribe( a =>{
+      this.refresh();
     })
   }
 
@@ -91,16 +84,7 @@ export class UsersComponent implements OnInit {
     if(this.form.valid){
       const {password,username,email,number,picture} = this.form.getRawValue()
       this.update(username,email,password,number,picture);
-      
-      this.Router.params.subscribe( params => {
-        this.email = params['_id']
-      });
-      this.UsersService.getUsers().subscribe( a =>{
-        this.dataSource = a;
-      });
-      this.dataSource = this.dataSource.filter( a =>{
-          a.email = this.email;
-      })
+      this.refresh();
       } 
       else{
       console.log('Error, faltan datos',this.form);
@@ -110,7 +94,17 @@ export class UsersComponent implements OnInit {
   update(username:string, email:string, password:string, number:number, picture:string){
       this.UsersService.updateUser(username,email,password,number,picture).subscribe( a => {
         console.log(a);
+        this.refresh()
       });
   }
+
+  create(username:string, email:string, password:string, number:number, picture:string){
+    /*this.UsersService.createUser(username,email,password,number,picture).subscribe( a => {
+      console.log(a);
+      this.refresh()
+    });*/
+    console.log(username,email,password,number,picture)
+  }
+
 }
 
