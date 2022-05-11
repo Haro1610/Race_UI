@@ -33,6 +33,9 @@ export class CircuitsComponent implements OnInit {
       name: [],
       address:[],
       distance:[],
+      description:[],
+      circuit_distance:[],
+      phone_number:[]
       //imagen: []
     }
     ); 

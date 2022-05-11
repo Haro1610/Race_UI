@@ -65,28 +65,28 @@
         <form [formGroup]= "form" >
   
           <mat-form-field appearance="fill">
-            <mat-label>Editar nombre</mat-label>
-            <input matInput formControlName = "username">
+            <mat-label>Agregar nombre</mat-label>
+            <input matInput formControlName = "name">
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">
-            <mat-label>Editar correo</mat-label>
-            <input matInput  formControlName = "email">
+            <mat-label>Agregar distancia</mat-label>
+            <input matInput  formControlName = "circuit_distance">
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">
-            <mat-label>Editar password</mat-label>
-            <input matInput  formControlName = "password">
+            <mat-label>Agregar direccion</mat-label>
+            <input matInput  formControlName = "address">
           </mat-form-field>
           <br>
            <mat-form-field appearance="fill" >
-            <mat-label>Number</mat-label>
-            <input matInput formControlName = "number">
+            <mat-label>Agregar telefono</mat-label>
+            <input matInput formControlName = "phone_number">
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">
-            <mat-label>Editar foto de perfil</mat-label>
-            <input matInput  formControlName = "imagen">
+            <mat-label>Agregar descripcion</mat-label>
+            <input matInput  formControlName = "description">
           </mat-form-field>
           </form>
         </div>
@@ -133,15 +133,33 @@
                 <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
               </div>
               <div class="modal-body">
-                <mat-form-field appearance="fill">
-                  <mat-label>Editar nombre</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="fill">
-                  <mat-label>Editar correo</mat-label>
-                  <input matInput>
-                </mat-form-field>
+                <form [formGroup]= "form" >
+  
+                  <mat-form-field appearance="fill">
+                    <mat-label>Agregar nombre</mat-label>
+                    <input matInput formControlName = "name">
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Agregar distancia</mat-label>
+                    <input matInput  formControlName = "circuit_distance">
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Agregar direccion</mat-label>
+                    <input matInput  formControlName = "address">
+                  </mat-form-field>
+                  <br>
+                   <mat-form-field appearance="fill" >
+                    <mat-label>Agregar telefono</mat-label>
+                    <input matInput formControlName = "phone_number">
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Agregar descripcion</mat-label>
+                    <input matInput  formControlName = "description">
+                  </mat-form-field>
+                  </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-success" (click)="c('Save click')">Save</button>
@@ -167,49 +185,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  -->
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        <div class="agregar">
-          <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
-            <div class="modal-header">
-              <h4 class="modal-title" id="modal-basic-title">Agregar usuario</h4>
-              <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
-            </div>
-            <div class="modal-body">
-              <form [formGroup]= "form" >
-        
-                <mat-form-field appearance="fill">
-                  <mat-label>Editar nombre</mat-label>
-                  <input matInput formControlName = "username">
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="fill">
-                  <mat-label>Editar correo</mat-label>
-                  <input matInput  formControlName = "email">
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="fill">
-                  <mat-label>Editar password</mat-label>
-                  <input matInput  formControlName = "password">
-                </mat-form-field>
-                <br>
-                 <mat-form-field appearance="fill" >
-                  <mat-label>Number</mat-label>
-                  <input matInput formControlName = "number">
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="fill">
-                  <mat-label>Editar foto de perfil</mat-label>
-                  <input matInput  formControlName = "imagen">
-                </mat-form-field>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-success" >Save</button>
-              </div>
-            </ng-template>
-            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" class="add" (click)="open(content)">
-              <mat-icon>add</mat-icon>
-            </button>
-        </div>
       </table> 
       
 </div>
