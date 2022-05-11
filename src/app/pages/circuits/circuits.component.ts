@@ -5,6 +5,8 @@ import { CircuitsService } from 'src/app/shared/services/circuits.service';
 import { Circuits } from 'src/app/shared/services/interfaces/circuits-interface';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-circuits',
@@ -13,19 +15,27 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CircuitsComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'name','address','circuit_distance','phone_number','editar','eliminar'];
+  displayedColumns: string[] = [ 'name','address','circuit_distance','phone_number','editar','eliminar','agregar'];
   dataSource: Circuits[] = [];
+  form: FormGroup;
   
 
   //public circuits: string = '';
 
   constructor(private circuitsService : CircuitsService, private auth: AuthServiceService, 
-    private router: Router,config: NgbModalConfig, private modalService: NgbModal) { 
+    private router: Router,config: NgbModalConfig, private modalService: NgbModal,private formBuilder: FormBuilder) { 
     if (!auth.get()){
       this.router.navigate(['/home']);
     }
     config.backdrop = 'static';
-    config.keyboard = false; 
+    config.keyboard = false;
+    this.form = this.formBuilder.group({
+      name: [],
+      address:[],
+      distance:[],
+      //imagen: []
+    }
+    ); 
   }
 
   ngOnInit(): void {
