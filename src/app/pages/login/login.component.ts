@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/shared/services/login.service';
 import { Login } from 'src/app/shared/services/interfaces/login';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
+import { SocialAuthService, GoogleLoginProvider } from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-login',
@@ -15,17 +16,22 @@ export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
-  constructor(private LoginService:LoginService, private router:Router, private authService :AuthServiceService) {
+  constructor(private loginService:LoginService, private router:Router, private authService :AuthServiceService, private socialAuth: SocialAuthService) {
     if (authService.get()){
       this.router.navigate(['/races']);
     } 
   }
 
   ngOnInit(): void {
+    this.socialAuth.authState.subscribe((user) => {
+      console.log(user);
+      
+      //this.loggedIn = (user != null);
+    });
   }
 
   login(): void{
-    this.LoginService.DBLogIn(this.email,this.password).subscribe( res => {
+    this.loginService.DBLogIn(this.email,this.password).subscribe( res => {
         console.log("iniciando sesion")
         console.log(res)
         //console.log(a)
@@ -41,6 +47,10 @@ export class LoginComponent implements OnInit {
      }).catch(e =>{
         console.log(e)
      });*/
+    }
+    googleLogIn(){
+      this.socialAuth.signIn(GoogleLoginProvider.PROVIDER_ID);
+
     }
 }
 

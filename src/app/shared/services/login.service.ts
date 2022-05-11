@@ -27,6 +27,8 @@ export class LoginService {
     return this.httpClient.post<any>(url,{email: email, password: password});
   }
 
+  
+
   //signIn(email: string)
 
 }
