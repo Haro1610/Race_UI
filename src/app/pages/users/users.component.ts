@@ -55,6 +55,8 @@ export class UsersComponent implements OnInit {
     //this.dataSource = ELEMENT_DATA;
   }
 
+
+
   open(content: any) {
     this.modalService.open(content);
   }
@@ -67,5 +69,15 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['/users'])
   }
 
+  update(//username:string, email:string, password:string, number:number, picture:string
+    content:any
+  ){
+     console.log(content)
+    /*
+      this.UsersService.updateUser(username,email,password,number,picture).subscribe( a => {
+        console.log(a);
+      });
+      */
+  }
 }
 
