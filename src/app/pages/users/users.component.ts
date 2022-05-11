@@ -80,10 +80,18 @@ export class UsersComponent implements OnInit {
     })
   }
 
-  sendData(){
+  sendData(its_new:boolean){
     if(this.form.valid){
       const {password,username,email,number,picture} = this.form.getRawValue()
-      this.update(username,email,password,number,picture);
+      if(its_new){
+        console.log("creando usuario")
+        this.create(username,email,password,number,picture)
+      }
+      else{
+        console.log("updateando:")
+        this.update(username,email,password,number,picture);
+      }
+      console.log(its_new)
       this.refresh();
       } 
       else{
@@ -99,11 +107,11 @@ export class UsersComponent implements OnInit {
   }
 
   create(username:string, email:string, password:string, number:number, picture:string){
-    /*this.UsersService.createUser(username,email,password,number,picture).subscribe( a => {
+    console.log(username,email,password,number,picture);
+    this.UsersService.createUser(username,email,password,number,picture).subscribe( a => {
       console.log(a);
       this.refresh()
-    });*/
-    console.log(username,email,password,number,picture)
+    });
   }
 
 }
