@@ -91,7 +91,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-success" >Save</button>
+          <button type="button" class="btn btn-outline-success" (click)="sendData(true)">Save</button>
         </div>
       </ng-template>
       <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" class="add" (click)="open(content)">
@@ -162,7 +162,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-success" (click)="c('Save click')">Save</button>
+                <button type="button" class="btn btn-outline-success" (click)="sendData(false)">Save</button>
               </div>
             </ng-template>
             <button class="btn btn-lg btn-outline-warning" (click)="open(content)">Editar informacion</button>

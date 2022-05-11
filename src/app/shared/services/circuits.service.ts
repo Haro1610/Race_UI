@@ -21,5 +21,25 @@ export class CircuitsService {
     console.log("preparando para eliminar");
     const url = 'http://localhost:3000/api/circuits/'+id;
     return this.httpClient.delete<Circuits>(url);
+  }  
+  updateCircuit(name:string, description:string, address:string, phone_number:number, circuit_distance:string): Observable<Circuits>{
+    const url = 'http://localhost:3000/api/circuits/';
+    return this.httpClient.put<Circuits>(url,
+      {name:name,
+      description:description,
+      address:address,
+      phone_number:phone_number,
+      circuit_distance:circuit_distance});
   } 
+
+  createCircuit(name:string, description:string, address:string, phone_number:number, circuit_distance:string): Observable<Circuits>{
+    const url = 'http://localhost:3000/api/circuits/';
+    return this.httpClient.post<Circuits>(url,
+      {name:name,
+      description:description,
+      address:address,
+      phone_number:phone_number,
+      circuit_distance:circuit_distance});
+  } 
+
 }

@@ -36,7 +36,6 @@ export class CircuitsComponent implements OnInit {
       description:[],
       circuit_distance:[],
       phone_number:[]
-      //imagen: []
     }
     ); 
   }
@@ -65,6 +64,38 @@ export class CircuitsComponent implements OnInit {
     //this.router.navigate(['/users'])
   }
   
+  sendData(its_new:boolean){
+    if(this.form.valid){
+      const {name, description, address, phone_number, circuit_distance} = this.form.getRawValue()
+      if(its_new){
+        console.log("creando circuito")
+        console.log(name, description, address, phone_number, circuit_distance)
+        this.create(name, description, address, phone_number, circuit_distance)
+      }
+      else{
+        console.log("updateando:")
+        this.update(name, description, address, phone_number, circuit_distance);
+      }
+      this.refresh();
+      } 
+      else{
+      console.log('Error, faltan datos',this.form);
+    }
+  }
+
+  update(name:string, description:string, address:string, phone_number:number, circuit_distance:string){
+    this.circuitsService.updateCircuit(name, description, address, phone_number, circuit_distance).subscribe( a => {
+      console.log(a);
+      this.refresh()
+    });
+}
+
+  create(name:string, description:string, address:string, phone_number:number, circuit_distance:string){
+    this.circuitsService.createCircuit(name, description, address, phone_number, circuit_distance).subscribe( a => {
+      console.log(a);
+      this.refresh()
+    });
+  }
 
 }
 // import { Component } from '@angular/core';
