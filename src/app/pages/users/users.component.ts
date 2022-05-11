@@ -40,7 +40,7 @@ export class UsersComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
     this.form = this.formBuilder.group({
-      name: [],
+      username: [],
       email: [],
       password: [],
       number: [],
@@ -58,13 +58,11 @@ export class UsersComponent implements OnInit {
       this.UsersService.getUsers().subscribe( a =>{
         this.dataSource = a;
     });
-      console.log(this.dataSource)
       this.dataSource = this.dataSource.filter( a =>{
           a.email = this.email;
       })
       console.log(this.dataSource)
     
-    //this.dataSource = ELEMENT_DATA;
   }
 
 
@@ -78,28 +76,41 @@ export class UsersComponent implements OnInit {
     this.UsersService.deleteUser(email).subscribe( a =>{
       console.log(a)
     })
-    this.router.navigate(['/users'])
+    this.Router.params.subscribe( params => {
+      this.email = params['_id']
+    });
+    this.UsersService.getUsers().subscribe( a =>{
+      this.dataSource = a;
+    });
+    this.dataSource = this.dataSource.filter( a =>{
+        a.email = this.email;
+    })
   }
 
   sendData(){
     if(this.form.valid){
-      const {password,name,email,username} = this.form.getRawValue()
-      console.log('Enviar datos',password,name,email,username);
-      //this.router.navigate(['/users']);
-    } else{
+      const {password,username,email,number,picture} = this.form.getRawValue()
+      this.update(username,email,password,number,picture);
+      
+      this.Router.params.subscribe( params => {
+        this.email = params['_id']
+      });
+      this.UsersService.getUsers().subscribe( a =>{
+        this.dataSource = a;
+      });
+      this.dataSource = this.dataSource.filter( a =>{
+          a.email = this.email;
+      })
+      } 
+      else{
       console.log('Error, faltan datos',this.form);
     }
   }
 
-  update(//username:string, email:string, password:string, number:number, picture:string
-    content:any
-  ){
-     console.log(content)
-    /*
+  update(username:string, email:string, password:string, number:number, picture:string){
       this.UsersService.updateUser(username,email,password,number,picture).subscribe( a => {
         console.log(a);
       });
-      */
   }
 }
 

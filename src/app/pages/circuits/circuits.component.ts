@@ -49,14 +49,12 @@ export class CircuitsComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  sendData(){
-    if(this.form.valid){
-      const {name,address,distance} = this.form.getRawValue()
-      console.log('Enviar datos',name,address,distance);
-      //this.router.navigate(['/users']);
-    } else{
-      console.log('Error, faltan datos',this.form);
-    }
+  delete(id :string){
+    console.log("vamos a borrar a :" + id)
+    this.circuitsService.deleteCircuit(id).subscribe(a => {
+      console.log(a)
+    });
+    //this.router.navigate(['/users'])
   }
 
 }

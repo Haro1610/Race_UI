@@ -53,27 +53,27 @@
 
               <mat-form-field appearance="fill">
                 <mat-label>Editar nombre</mat-label>
-                <input matInput value={{element.username}} formControlName = "name">
+                <input matInput placeholder={{element.username}} formControlName = "username">
               </mat-form-field>
               <br>
               <mat-form-field appearance="fill">
                 <mat-label>Editar correo</mat-label>
-                <input matInput value={{element.email}} formControlName = "email">
+                <input matInput placeholder={{element.email}} formControlName = "email">
               </mat-form-field>
               <br>
               <mat-form-field appearance="fill">
                 <mat-label>Editar password</mat-label>
-                <input matInput value={{element.password}} formControlName = "password" placeholder="{{element.password}}">
+                <input matInput placeholder={{element.password}} formControlName = "password">
               </mat-form-field>
               <br>
-               <!-- <mat-form-field appearance="fill" formControlName = "number">
+              <mat-form-field appearance="fill" >
                 <mat-label>Number</mat-label>
-                <input matInput value={{element.number}}>
-              </mat-form-field>  -->
+                <input matInput  formControlName = "number" placeholder={{element.number}}>
+              </mat-form-field>  
               <br>
               <mat-form-field appearance="fill">
                 <mat-label>Editar foto de perfil</mat-label>
-                <input matInput value={{element.picture}} formControlName = "imagen">
+                <input matInput placeholder={{element.picture}} formControlName = "imagen">
               </mat-form-field>
               </form>
             </div>
