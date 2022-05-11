@@ -5,6 +5,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 import { Users } from 'src/app/shared/services/interfaces/users'; 
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
@@ -25,18 +26,29 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     </div>`
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = [ 'name', 'email', 'number','editar','eliminar'];
+  displayedColumns: string[] = [ 'name', 'email', 'number','editar','eliminar','agregar'];
   dataSource: Users[] = [];
   public email : string = '';
+  form: FormGroup;
 
   constructor(private Router : ActivatedRoute, private UsersService : UsersService,
-    private auth: AuthServiceService, private router: Router,config: NgbModalConfig, private modalService: NgbModal) { 
+    private auth: AuthServiceService, private router: Router,config: NgbModalConfig, 
+    private modalService: NgbModal,private formBuilder: FormBuilder) { 
     if (!auth.get()){
       this.router.navigate(['/home']);
     } 
     config.backdrop = 'static';
     config.keyboard = false;
+    this.form = this.formBuilder.group({
+      name: [],
+      email: [],
+      password: [],
+      number: [],
+      imagen: []
+    }
+    );
   }
+
 
   ngOnInit(): void {
 
@@ -65,6 +77,16 @@ export class UsersComponent implements OnInit {
       console.log(a)
     })
     this.router.navigate(['/users'])
+  }
+
+  sendData(){
+    if(this.form.valid){
+      const {password,name,email,username} = this.form.getRawValue()
+      console.log('Enviar datos',password,name,email,username);
+      //this.router.navigate(['/users']);
+    } else{
+      console.log('Error, faltan datos',this.form);
+    }
   }
 
   update(//username:string, email:string, password:string, number:number, picture:string
