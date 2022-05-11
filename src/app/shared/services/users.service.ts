@@ -17,4 +17,10 @@ export class UsersService {
     console.log(this.httpClient.get<Users[]>(url))
     return this.httpClient.get<Users[]>(url);
   }
+
+  deleteUser(email: string): Observable<Users>{
+    console.log("preparando para eliminar");
+    const url = 'http://localhost:3000/api/users/'+email;
+    return this.httpClient.delete<Users>(url);
+  }  
 }

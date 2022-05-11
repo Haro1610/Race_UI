@@ -59,7 +59,13 @@ export class UsersComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  
+  delete(email :string){
+    console.log("vamos a borrar a :" + email)
+    this.UsersService.deleteUser(email).subscribe( a =>{
+      console.log(a)
+    })
+    this.router.navigate(['/users'])
+  }
 
 }
 

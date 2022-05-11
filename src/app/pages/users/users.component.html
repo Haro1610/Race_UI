@@ -47,12 +47,27 @@
           <div class="modal-body">
             <mat-form-field appearance="fill">
               <mat-label>Editar nombre</mat-label>
-              <input matInput>
+              <input matInput value={{element.username}}>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
               <mat-label>Editar correo</mat-label>
-              <input matInput>
+              <input matInput value={{element.email}}>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label>Editar password</mat-label>
+              <input matInput value={{element.password}}>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label>Number</mat-label>
+              <input matInput value={{element.number}}>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label>Editar foto de perfil</mat-label>
+              <input matInput value={{element.picture}}>
             </mat-form-field>
           </div>
           <div class="modal-footer">
@@ -67,7 +82,7 @@
     <ng-container matColumnDef="eliminar">
       <th mat-header-cell *matHeaderCellDef> Eliminar </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-fab color="warn" aria-label="Example icon button with a delete icon">
+        <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="delete(element.email)">
           <mat-icon>delete</mat-icon>
         </button>
 
