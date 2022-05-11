@@ -48,7 +48,7 @@
           <p>{{circuit.description}}</p>
           <p>{{circuit.circuit_distance}}</p>
           <p>{{circuit.address}}</p>
-          <p><a class="btn btn-lg btn btn-success" routerLink="/races">Unete a una carrera</a></p>
+          <p><a class="btn btn-lg btn btn-outline-warning" routerLink="/races">Conoce los próximos eventos!</a></p>
         </div>
       </ng-template>
     </ngb-carousel>
@@ -91,7 +91,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-success" (click)="sendData(true)">Save</button>
+          <button type="button" class="btn btn-outline-success" (click)="sendData('')">Save</button>
         </div>
       </ng-template>
       <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" class="add" (click)="open(content)">
@@ -162,7 +162,7 @@
                   </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-success" (click)="sendData(false)">Save</button>
+                <button type="button" class="btn btn-outline-success" (click)="sendData(element._id)">Save</button>
               </div>
             </ng-template>
             <button class="btn btn-lg btn-outline-warning" (click)="open(content)">Editar informacion</button>

@@ -5,9 +5,12 @@ import { Router } from '@angular/router';
 import { RaceResultsService } from 'src/app/shared/services/race-results.service';
 import { RaceResults } from 'src/app/shared/services/interfaces/race-results';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
+
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+
+const ELEMENT_DATA: RaceResults[] = [];
 
 @Component({
   selector: 'app-race-results',
