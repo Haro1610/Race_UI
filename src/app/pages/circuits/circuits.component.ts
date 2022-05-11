@@ -15,7 +15,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CircuitsComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'name','address','circuit_distance','phone_number','editar','eliminar','agregar'];
+  displayedColumns: string[] = [ 'name','address','circuit_distance','phone_number','editar','eliminar'];
   dataSource: Circuits[] = [];
   form: FormGroup;
   
@@ -33,6 +33,9 @@ export class CircuitsComponent implements OnInit {
       name: [],
       address:[],
       distance:[],
+      description:[],
+      circuit_distance:[],
+      phone_number:[]
       //imagen: []
     }
     ); 
