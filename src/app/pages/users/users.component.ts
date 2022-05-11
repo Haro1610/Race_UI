@@ -26,7 +26,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     </div>`
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = [ 'name', 'email', 'number','editar','eliminar','agregar'];
+  displayedColumns: string[] = [ 'name', 'email', 'number','editar','eliminar'];
   dataSource: Users[] = [];
   public email : string = '';
   form: FormGroup;
