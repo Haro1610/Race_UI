@@ -126,7 +126,7 @@
                 <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
               </div>
               <div class="modal-body">
-                <form [formGroup]= "form" (submit)="sendData()" >
+                <form [formGroup]= "form"  >
     
                   <mat-form-field appearance="fill">
                     <mat-label>Agregar nombre circuito</mat-label>
@@ -145,7 +145,7 @@
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-success" (click)="sendData()">Save</button>
+                  <button type="button" class="btn btn-outline-success" >Save</button>
                 </div>
               </ng-template>
     
