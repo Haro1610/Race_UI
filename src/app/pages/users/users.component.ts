@@ -6,6 +6,7 @@ import { Users } from 'src/app/shared/services/interfaces/users';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-users',
@@ -33,7 +34,7 @@ export class UsersComponent implements OnInit {
 
   constructor(private Router : ActivatedRoute, private UsersService : UsersService,
     private auth: AuthServiceService, private router: Router,config: NgbModalConfig, 
-    private modalService: NgbModal,private formBuilder: FormBuilder) { 
+    private modalService: NgbModal,private formBuilder: FormBuilder,private storageService:StorageService) { 
     if (!auth.get()){
       this.router.navigate(['/home']);
     } 
@@ -112,6 +113,28 @@ export class UsersComponent implements OnInit {
       console.log(a);
       this.refresh()
     });
+  }
+
+  imagenes: any[]=[];
+  cargarImagen(event:any){
+    let image = event.target.files;
+    let reader = new FileReader();
+    const username = this.form.getRawValue()
+
+    reader.readAsDataURL(image[0]);
+    reader.onloadend= () => {
+      console.log(reader.result);
+      this.imagenes.push(reader.result);
+      this.storageService.subirImagen(username+"_"+Date.now(),reader.result).then(urlImage =>{
+        console.log(urlImage);
+        return urlImage;
+      });
+
+
+    }
+
+
+
   }
 
 }
