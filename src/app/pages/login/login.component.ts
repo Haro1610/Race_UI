@@ -52,7 +52,10 @@ export class LoginComponent implements OnInit {
      });*/
     }
     googleLogIn(){
-      this.socialAuth.signIn(GoogleLoginProvider.PROVIDER_ID);
+      this.socialAuth.signIn(GoogleLoginProvider.PROVIDER_ID).then(a =>{
+        this.router.navigate(['/races']);
+      });
+
     }
     validateLogIn(){
 
