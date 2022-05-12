@@ -14,22 +14,47 @@
 </mat-toolbar> -->
 
 
-<div class="center-car">
-  <ngb-carousel >
-    <ng-template *ngFor="let race of dataSource"  ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
-      </div>
-      <div class="carousel-caption">
-        <h1 >{{race.name}}</h1>
-        <p>{{race.date}}</p>
-        <p>{{race.circuit}}</p>
-        <p>Cupos disponibles: {{race.disponibilidad}}</p>
-        <p><a class="btn btn-lg btn btn-outline-warning" (click)="joinRace(race._id)">Unete a a la carrera!</a></p>
-      </div>
-    </ng-template>
-  </ngb-carousel>
-</div>
+
+<div>
+  <div class="center-car">
+    <ngb-carousel >
+      <ng-template *ngFor="let race of dataSource"  ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+        </div>
+        <div class="carousel-caption">
+          <h1 class="baner">Proximos eventos!</h1>
+          <h1 >{{race.name}}</h1>
+          <p>{{race.date}}</p>
+          <p>{{race.circuit}}</p>
+          <p>Cupos disponibles: {{race.disponibilidad}}</p>
+          <p><a class="btn btn-lg btn btn-outline-warning" (click)="joinRace(race._id)">Unete a a la carrera!</a></p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</div> 
+
+
+  <div class="center-car">
+    <ngb-carousel >
+      <ng-template *ngFor="let raceIn of user_events"  ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+        </div>
+        <div class="carousel-caption">
+          <h1 class="baner">Tus Proximos eventos!</h1>
+          <h1 >{{raceIn.name}}</h1>
+          <p>{{raceIn.date}}</p>
+          <p>{{raceIn.circuit}}</p>
+          <p>Cupos disponibles: {{raceIn.disponibilidad}}</p>
+          <p><a class="btn btn-lg btn btn-outline-warning" >Salir de la carrera</a></p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+
 
 <ngb-accordion #acc="ngbAccordion">
   <ngb-panel id="toggle-1" title="Carreras Abiertas">
@@ -239,8 +264,7 @@
 
 
       
-            <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+            
             <tr mat-header-row *matHeaderRowDef="displayed; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayed;"></tr>
           </table>

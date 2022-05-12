@@ -43,6 +43,8 @@ table {
   font-style: italic;
   font-size: x-large;
   margin-bottom: 100px;
+  margin-top: 100px;
+  padding-top: 200px;
   text-align: center;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
@@ -58,4 +60,13 @@ table {
    margin-right: auto;
   width: 100%;
   padding: 10px;
+}
+.baner{
+  font-size: xx-large;
+  padding-bottom: auto;
+  color: rgb(219, 174, 23);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-decoration: underline;
+  padding-bottom: 15%;
+
 }

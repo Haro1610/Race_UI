@@ -75,7 +75,9 @@ export class RacesComponent implements OnInit {
         console.log("contra:"+ this.hoy)
         return a.status === 'open'  &&  this.stringToDate(a.date) > this.hoy && !a.drivers.find(a =>{return a === localStorage.getItem('username')});
       });
-      console.log(this.dataSource)
+      console.log("closed"+this.closed_events);
+      console.log("events"+this.user_events);
+  
     });
   }
 
