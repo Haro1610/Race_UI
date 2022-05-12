@@ -27,6 +27,7 @@ export class RacesComponent implements OnInit {
   
   dataSource: Races[] = [];
   closed_events: Races[] = [];
+  user_events: Races[] = [];
   private current_race: string = '';
   private hoy: Date = new Date();
   form: FormGroup;
@@ -56,15 +57,25 @@ export class RacesComponent implements OnInit {
 
   refresh(): void {
     this.racesService.getRaces().subscribe(a =>{
-      this.dataSource = a;
+      a.forEach(carrera =>{
+        carrera.disponibilidad =  carrera.capacity - carrera.drivers.length;
+        return carrera;
+      })
+      this.dataSource = a
       this.closed_events = this.dataSource.filter( a =>{
         return a.status === 'closed'  &&  this.stringToDate(a.date) > this.hoy ;
+    });
+    this.user_events = this.dataSource.filter( a =>{
+      //console.log("probando :" + this.stringToDate(a.date))
+      console.log("contra:"+ this.hoy)
+      return a.status === 'open'  &&  this.stringToDate(a.date) > this.hoy && a.drivers.find(a =>{return a === localStorage.getItem('username')});
     });        
       this.dataSource = this.dataSource.filter( a =>{
         //console.log("probando :" + this.stringToDate(a.date))
         console.log("contra:"+ this.hoy)
-        return a.status === 'open'  &&  this.stringToDate(a.date) > this.hoy ;
+        return a.status === 'open'  &&  this.stringToDate(a.date) > this.hoy && !a.drivers.find(a =>{return a === localStorage.getItem('username')});
       });
+      console.log(this.dataSource)
     });
   }
 
@@ -97,9 +108,16 @@ export class RacesComponent implements OnInit {
       console.log(a);
       this.refresh()
     });
-}
+  }
   
-
+  joinRace(id:string){
+    console.log(id)
+    this.racesService.joinRace(id).subscribe( a => {
+      console.log(a);
+      this.refresh()
+    });
+  }
+  
 
   sendData(id:string){
     console.log(id)
