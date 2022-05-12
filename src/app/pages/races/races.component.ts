@@ -43,7 +43,7 @@ export class RacesComponent implements OnInit {
       number_of_laps: [],
       date: [],
       circuit: [],
-      capacity:[],
+      capacity:[]
     }
     );
   }
@@ -54,37 +54,74 @@ export class RacesComponent implements OnInit {
     const formatedDate = new Date(+year, +month - 1, +day);
     return formatedDate;}
 
+  refresh(): void {
+    this.racesService.getRaces().subscribe(a =>{
+      this.dataSource = a;
+      this.closed_events = this.dataSource.filter( a =>{
+        return a.status === 'closed'  &&  this.stringToDate(a.date) > this.hoy ;
+    });        
+      this.dataSource = this.dataSource.filter( a =>{
+        //console.log("probando :" + this.stringToDate(a.date))
+        console.log("contra:"+ this.hoy)
+        return a.status === 'open'  &&  this.stringToDate(a.date) > this.hoy ;
+      });
+    });
+  }
 
   ngOnInit(): void {
-      this.racesService.getRaces().subscribe(a =>{
-        this.dataSource = a;
-        this.closed_events = this.dataSource.filter( a =>{
-          return a.status === 'closed'  &&  this.stringToDate(a.date) > this.hoy ;
-      });        
-        this.dataSource = this.dataSource.filter( a =>{
-          //console.log("probando :" + this.stringToDate(a.date))
-          console.log("contra:"+ this.hoy)
-          return a.status === 'open'  &&  this.stringToDate(a.date) > this.hoy ;
-        });
-      });
+    this.refresh();
   }
 
   open(content: any) {
     this.modalService.open(content);
   }
 
-  sendData(its_new:boolean){
+  delete(id :string){
+    console.log("vamos a borrar a :" + id)
+    this.racesService.deleteRace(id).subscribe(a => {
+      console.log(a)
+      this.refresh();
+    });
+  }
+
+  create(name:string,number_of_laps:number,date:string,circuit:string,capacity:number){
+    console.log(name,number_of_laps,date,circuit,capacity);
+    this.racesService.createRace(name,number_of_laps,date,circuit,capacity).subscribe( a => {
+      console.log(a);
+      this.refresh()
+    });
+  }
+
+  update(id:string,name:string,number_of_laps:number,date:string,circuit:string,capacity:number){
+    this.racesService.updateRace(id,name,number_of_laps,date,circuit,capacity).subscribe( a => {
+      console.log(a);
+      this.refresh()
+    });
+}
+  
+
+
+  sendData(id:string){
+    console.log(id)
     if(this.form.valid){
-      const {name,
-        number_of_laps,date,circuit,drivers,capacity,status,} = this.form.getRawValue()
-      console.log('Enviar datos',name,number_of_laps,date,circuit,drivers,capacity,status);
-    } else{
+      const {name,number_of_laps,date,circuit,capacity} = this.form.getRawValue()
+      console.log("viendo que nos dieron");
+      console.log( this.form.getRawValue())
+      if(!id){
+        console.log("creando carrera")
+        console.log(name,number_of_laps,date,circuit,capacity)
+        this.create(name,number_of_laps,date,circuit,capacity)
+      }
+      else{
+        console.log("updateando:")
+        console.log(id,name,number_of_laps,date,circuit,capacity)
+        this.update(id,name,number_of_laps,date,circuit,capacity);
+      }
+      this.refresh();
+      } 
+      else{
       console.log('Error, faltan datos',this.form);
     }
   }
-
-
-
-
 
 }
