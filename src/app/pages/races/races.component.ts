@@ -63,7 +63,7 @@ export class RacesComponent implements OnInit {
       })
       this.dataSource = a
       this.closed_events = this.dataSource.filter( a =>{
-        return a.status === 'closed'  &&  this.stringToDate(a.date) > this.hoy ;
+        return a.status === 'closed'  &&  this.stringToDate(a.date) < this.hoy ;
     });
     this.user_events = this.dataSource.filter( a =>{
       //console.log("probando :" + this.stringToDate(a.date))
@@ -75,9 +75,13 @@ export class RacesComponent implements OnInit {
         console.log("contra:"+ this.hoy)
         return a.status === 'open'  &&  this.stringToDate(a.date) > this.hoy && !a.drivers.find(a =>{return a === localStorage.getItem('username')});
       });
+<<<<<<< HEAD
       console.log("closed"+this.closed_events);
       console.log("events"+this.user_events);
   
+=======
+      console.log(this.user_events)
+>>>>>>> 6485ac12d88429cf3b14c223fce2f1dd9886c9c9
     });
   }
 
