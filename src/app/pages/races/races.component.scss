@@ -12,15 +12,7 @@ table {
 }
 
 
-.span {
-  margin: auto;
-  padding-top: 0%;
-}
-.header{
-  margin-top: 0%;
-  background-color:rgb(43, 226, 119);
-  color: black;
-}
+
 .add{
   color: green;
 }
@@ -69,4 +61,34 @@ table {
   text-decoration: underline;
   padding-bottom: 15%;
 
+}
+
+.span {
+  margin: auto;
+  padding-top: 0%;
+}
+.head2{
+  margin-top: 0%;
+  background-color:rgba(238, 184, 34, 0.719);
+  color: black;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: xx-large;
+}
+
+.span {
+  margin: auto;
+  padding-top: 0%;
+}
+.head1{
+  margin-top: 0%;
+  background-color:rgba(109, 238, 34, 0.719);
+  color: black;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: xx-large;
 }

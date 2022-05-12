@@ -148,7 +148,19 @@
           <mat-icon>add</mat-icon>
         </button>
     </div>
-      
+
+    
+    <input type="file" accept=".png ,.jpg,.jpegm.bmp,.gif" (change)="cargarImagen($event)" id="inputImage">
+    <label for="inputImage" class="labelInputFile">Subir imagenes</label>
+    <img src=""  alt="">
+
+    <!-- <div class="example-flex-container">
+      <div class="example-button-container">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" >
+          <mat-icon matInput type="file">  add_photo_alternate</mat-icon>
+        </button>
+      </div>
+       -->
 
 
 

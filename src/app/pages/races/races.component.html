@@ -13,14 +13,18 @@
   </mat-toolbar-row>
 </mat-toolbar> -->
 
-
+<mat-toolbar color="warn" class="head1">
+  <mat-toolbar-row>
+      <span class="span" >Proximos eventos </span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 <div>
   <div class="center-car">
     <ngb-carousel >
       <ng-template *ngFor="let race of dataSource"  ngbSlide>
         <div class="picsum-img-wrapper">
-          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+          <img src="https://firebasestorage.googleapis.com/v0/b/karts-racing.appspot.com/o/users%2F%5Bobject%20Object%5D_1652397914291?alt=media&token=cb3cf434-c83f-455e-9e70-e7144df1867f" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
         </div>
         <div class="carousel-caption">
           <h1 class="baner">Proximos eventos!</h1>
@@ -33,16 +37,23 @@
       </ng-template>
     </ngb-carousel>
   </div>
-</div> 
+</div>
+
+<mat-toolbar color="warn" class="head2">
+  <mat-toolbar-row>
+      <span class="span" >Tus proximos eventos </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 
 <div class="center-car">
   <ngb-carousel >
     <ng-template *ngFor="let raceIn of user_events"  ngbSlide>
       <div class="picsum-img-wrapper">
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+        <img src="https://firebasestorage.googleapis.com/v0/b/karts-racing.appspot.com/o/users%2F%5Bobject%20Object%5D_1652398278368?alt=media&token=a6887ce2-26c9-4795-ac24-f9b0ff6a61be" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
       </div>
       <div class="carousel-caption">
-        <h1 class="baner">Tus Proximos eventos!</h1>
+        <h1 class="baner"></h1>
         <h1 >{{raceIn.name}}</h1>
         <p>{{raceIn.date}}</p>
         <p>{{raceIn.circuit}}</p>
