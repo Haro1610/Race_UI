@@ -14,6 +14,23 @@
 </mat-toolbar> -->
 
 
+<div class="center-car">
+  <ngb-carousel >
+    <ng-template *ngFor="let race of dataSource"  ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h1 >{{race.name}}</h1>
+        <p>{{race.date}}</p>
+        <p>{{race.status}}</p>
+        <p>{{race.circuit}}</p>
+        <p><a class="btn btn-lg btn btn-outline-warning" routerLink="/races">Unete a a la carrera!</a></p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
 <ngb-accordion #acc="ngbAccordion">
   <ngb-panel id="toggle-1" title="Carreras Abiertas">
     <ng-template ngbPanelContent>

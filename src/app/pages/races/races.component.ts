@@ -43,9 +43,7 @@ export class RacesComponent implements OnInit {
       number_of_laps: [],
       date: [],
       circuit: [],
-      drivers: [],
       capacity:[],
-      status:[],
     }
     );
   }
