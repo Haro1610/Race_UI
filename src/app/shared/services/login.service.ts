@@ -27,7 +27,10 @@ export class LoginService {
     return this.httpClient.post<any>(url,{email: email, password: password});
   }
 
-  
+  validateGoogleLogIn(token:string){
+    const url = 'http://localhost:3000/api/Login/';
+    return this.httpClient.put<any>(url,{idToken: token});  
+  }
 
   //signIn(email: string)
 

@@ -24,7 +24,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.socialAuth.authState.subscribe((user) => {
-      console.log(user);
+      this.authService.save(user.idToken,user.email)
+      this.loginService.validateGoogleLogIn(this.authService.get()).subscribe(res => {
+        console.log(res);
+      })
       
       //this.loggedIn = (user != null);
     });
@@ -50,6 +53,8 @@ export class LoginComponent implements OnInit {
     }
     googleLogIn(){
       this.socialAuth.signIn(GoogleLoginProvider.PROVIDER_ID);
+    }
+    validateLogIn(){
 
     }
 }
