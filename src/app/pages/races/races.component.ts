@@ -99,15 +99,15 @@ export class RacesComponent implements OnInit {
     console.log(name,number_of_laps,date,circuit,capacity);
     this.racesService.createRace(name,number_of_laps,date,circuit,capacity).subscribe( a => {
       console.log(a);
-      this.refresh()
     });
+    this.refresh()
   }
 
   update(id:string,name:string,number_of_laps:number,date:string,circuit:string,capacity:number){
     this.racesService.updateRace(id,name,number_of_laps,date,circuit,capacity).subscribe( a => {
       console.log(a);
-      this.refresh()
     });
+    this.refresh()
   }
   
   joinRace(id:string){
@@ -116,6 +116,17 @@ export class RacesComponent implements OnInit {
       console.log(a);
       this.refresh()
     });
+    this.refresh()
+  }
+
+    
+  leftRace(id:string){
+    console.log(id)
+    this.racesService.leftRace(id).subscribe( a => {
+      console.log(a);
+      this.refresh()
+    });
+    this.refresh()
   }
   
 

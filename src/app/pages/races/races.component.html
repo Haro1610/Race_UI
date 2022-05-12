@@ -47,7 +47,7 @@
         <p>{{raceIn.date}}</p>
         <p>{{raceIn.circuit}}</p>
         <p>Cupos disponibles: {{raceIn.disponibilidad}}</p>
-        <p><a class="btn btn-lg btn btn-outline-warning" >Salir de la carrera</a></p>
+        <p><a class="btn btn-lg btn btn-outline-warning" (click)="leftRace(raceIn._id)">Salir de la carrera</a></p>
       </div>
     </ng-template>
   </ngb-carousel>

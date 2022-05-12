@@ -56,4 +56,11 @@ export class RacesService {
     });
   }
   
+  leftRace(id:string){
+    const url = 'http://localhost:3000/api/races/'+id;
+    console.log(url)
+    return this.httpClient.post<Races>(url,{
+      username:localStorage.getItem('username')
+    });
+  }
 }
