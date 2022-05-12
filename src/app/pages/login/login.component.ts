@@ -37,9 +37,8 @@ export class LoginComponent implements OnInit {
   login(): void{
     this.loginService.DBLogIn(this.email,this.password).subscribe( res => {
         console.log("iniciando sesion")
-        console.log(res)
-        //console.log(a)
-        this.authService.save(res.token,this.email,res.username)
+        console.log(res.data.user)
+        this.authService.save(res.data.user.token,this.email,res.data.user.username)
         this.router.navigate(['/races']);
       });
 
