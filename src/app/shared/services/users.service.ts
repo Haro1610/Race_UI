@@ -23,22 +23,22 @@ export class UsersService {
     const url = 'http://localhost:3000/api/users/'+email;
     return this.httpClient.delete<Users>(url);
   } 
-  updateUser(username:string, email:string, password:string, number:number, picture:string): Observable<Users>{
+  updateUser(username:string, email:string, password:string, number:number, image:string): Observable<Users>{
     const url = 'http://localhost:3000/api/users/';
     return this.httpClient.put<Users>(url,
       {username:username,
       email:email,
       password: password,
       number:number,
-      picture:picture});
+      picture:image});
   } 
-  createUser(username:string, email:string, password:string, number:number, picture:string): Observable<Users>{
+  createUser(username:string, email:string, password:string, number:number, image:string): Observable<Users>{
     const url = 'http://localhost:3000/api/users/';
     return this.httpClient.post<Users>(url,
       {username:username,
       email:email,
       password: password,
       number:number,
-      picture:picture});
+      picture:image});
   } 
 }

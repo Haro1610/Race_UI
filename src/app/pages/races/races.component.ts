@@ -44,7 +44,8 @@ export class RacesComponent implements OnInit {
       number_of_laps: [],
       date: [],
       circuit: [],
-      capacity:[]
+      capacity:[],
+      image:[]
     }
     );
   }
@@ -95,16 +96,16 @@ export class RacesComponent implements OnInit {
     });
   }
 
-  create(name:string,number_of_laps:number,date:string,circuit:string,capacity:number){
+  create(name:string,number_of_laps:number,date:string,circuit:string,capacity:number,image:string){
     console.log(name,number_of_laps,date,circuit,capacity);
-    this.racesService.createRace(name,number_of_laps,date,circuit,capacity).subscribe( a => {
+    this.racesService.createRace(name,number_of_laps,date,circuit,capacity,image).subscribe( a => {
       console.log(a);
     });
     this.refresh()
   }
 
-  update(id:string,name:string,number_of_laps:number,date:string,circuit:string,capacity:number){
-    this.racesService.updateRace(id,name,number_of_laps,date,circuit,capacity).subscribe( a => {
+  update(id:string,name:string,number_of_laps:number,date:string,circuit:string,capacity:number, image:string){
+    this.racesService.updateRace(id,name,number_of_laps,date,circuit,capacity,image).subscribe( a => {
       console.log(a);
     });
     this.refresh()
@@ -133,18 +134,18 @@ export class RacesComponent implements OnInit {
   sendData(id:string){
     console.log(id)
     if(this.form.valid){
-      const {name,number_of_laps,date,circuit,capacity} = this.form.getRawValue()
+      const {name,number_of_laps,date,circuit,capacity,image} = this.form.getRawValue()
       console.log("viendo que nos dieron");
       console.log( this.form.getRawValue())
       if(!id){
         console.log("creando carrera")
-        console.log(name,number_of_laps,date,circuit,capacity)
-        this.create(name,number_of_laps,date,circuit,capacity)
+        console.log(name,number_of_laps,date,circuit,capacity,image)
+        this.create(name,number_of_laps,date,circuit,capacity,image)
       }
       else{
         console.log("updateando:")
-        console.log(id,name,number_of_laps,date,circuit,capacity)
-        this.update(id,name,number_of_laps,date,circuit,capacity);
+        console.log(id,name,number_of_laps,date,circuit,capacity,image)
+        this.update(id,name,number_of_laps,date,circuit,capacity,image);
       }
       this.refresh();
       } 

@@ -22,7 +22,7 @@ export class CircuitsService {
     const url = 'http://localhost:3000/api/circuits/'+id;
     return this.httpClient.delete<Circuits>(url);
   }  
-  updateCircuit(id:string,name:string, description:string, address:string, phone_number:number, circuit_distance:string): Observable<Circuits>{
+  updateCircuit(id:string,name:string, description:string, address:string, phone_number:number, circuit_distance:string, image:string): Observable<Circuits>{
     const url = 'http://localhost:3000/api/circuits/';
     return this.httpClient.put<Circuits>(url,
       {id:id,
@@ -30,17 +30,21 @@ export class CircuitsService {
       description:description,
       address:address,
       phone_number:phone_number,
-      circuit_distance:circuit_distance});
+      circuit_distance:circuit_distance,
+      image:image
+    });
   } 
 
-  createCircuit(name:string, description:string, address:string, phone_number:number, circuit_distance:string): Observable<Circuits>{
+  createCircuit(name:string, description:string, address:string, phone_number:number, circuit_distance:string, image:string): Observable<Circuits>{
     const url = 'http://localhost:3000/api/circuits/';
     return this.httpClient.post<Circuits>(url,
       {name:name,
       description:description,
       address:address,
       phone_number:phone_number,
-      circuit_distance:circuit_distance});
+      circuit_distance:circuit_distance,
+      image:image
+    });
   } 
 
 }

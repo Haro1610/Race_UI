@@ -25,7 +25,7 @@ export class RacesService {
     return this.httpClient.delete<Races>(url);
   }
   
-  updateRace(id:string,name: string,number_of_laps: number,date: string,circuit:string,capacity: number): Observable<Races>{
+  updateRace(id:string,name: string,number_of_laps: number,date: string,circuit:string,capacity: number,image:string): Observable<Races>{
     const url = 'http://localhost:3000/api/races/';
     return this.httpClient.put<Races>(url,
       {_id:id,
@@ -33,18 +33,20 @@ export class RacesService {
         number_of_laps:number_of_laps,
         date:date,
         circuit:circuit,
-        capacity:capacity
+        capacity:capacity,
+        image:image
     });
   } 
 
-  createRace(name: string,number_of_laps: number,date: string,circuit:string,capacity: number): Observable<Races>{
+  createRace(name: string,number_of_laps: number,date: string,circuit:string,capacity: number,image:string): Observable<Races>{
     const url = 'http://localhost:3000/api/races/';
     return this.httpClient.post<Races>(url,
       {name:name,
       number_of_laps:number_of_laps,
       date:date,
       circuit:circuit,
-      capacity:capacity
+      capacity:capacity,
+      image:image
     });
   }
 
