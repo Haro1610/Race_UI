@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   Logflag: boolean = false;
+  showPassword: boolean = false;
 
   constructor(private loginService:LoginService, private router:Router, private authService :AuthServiceService, private socialAuth: SocialAuthService) {
     if (authService.get()){
