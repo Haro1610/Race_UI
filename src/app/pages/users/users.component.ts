@@ -31,6 +31,9 @@ export class UsersComponent implements OnInit {
   dataSource: Users[] = [];
   public email : string = '';
   form: FormGroup;
+  flag : boolean = false;
+
+  
 
   constructor(private Router : ActivatedRoute, private UsersService : UsersService,
     private auth: AuthServiceService, private router: Router,config: NgbModalConfig, 
@@ -55,7 +58,11 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
 
       this.refresh();
-      console.log(this.dataSource)
+      if(localStorage.getItem('level') === 'admin'){
+        this.flag = !this.flag;
+      }
+
+      //console.log(this.dataSource)
     
   }
 

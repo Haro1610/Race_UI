@@ -41,7 +41,7 @@
     <ngb-carousel >
       <ng-template *ngFor="let circuit of dataSource"  ngbSlide>
         <div class="picsum-img-wrapper">
-          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+          <img src="https://dmkracing.com/noticias/wp-content/uploads/2015/02/velocidad2.jpg" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
         </div>
         <div class="carousel-caption">
           <h1 >{{circuit.name}}</h1>
@@ -55,7 +55,7 @@
   </div>
 
  
-  <div class="agregar">
+  <div class="agregar" *ngIf="flag">
     <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Agregar usuario</h4>
@@ -100,7 +100,7 @@
   </div>
 
 
-  <div class="tabla" >
+  <div class="tabla" *ngIf="flag">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
         
          <ng-container matColumnDef="name">

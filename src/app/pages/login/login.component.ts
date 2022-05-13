@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
+  Logflag: boolean = false;
+
   constructor(private loginService:LoginService, private router:Router, private authService :AuthServiceService, private socialAuth: SocialAuthService) {
     if (authService.get()){
       this.router.navigate(['/races']);
@@ -40,12 +42,14 @@ export class LoginComponent implements OnInit {
         console.log(res.data.user)
         this.authService.save(res.data.user.token,this.email,res.data.user.username,res.data.user.level)
         this.router.navigate(['/races']);
+        this.Logflag = !this.Logflag;
       });
 
     }
     googleLogIn(){
       this.socialAuth.signIn(GoogleLoginProvider.PROVIDER_ID).then(a =>{
         this.router.navigate(['/races']);
+        this.Logflag = !this.Logflag;
       });
 
     }

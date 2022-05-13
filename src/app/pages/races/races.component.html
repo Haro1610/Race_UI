@@ -27,7 +27,7 @@
           <img src="https://firebasestorage.googleapis.com/v0/b/karts-racing.appspot.com/o/users%2F%5Bobject%20Object%5D_1652397914291?alt=media&token=cb3cf434-c83f-455e-9e70-e7144df1867f" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
         </div>
         <div class="carousel-caption">
-          <h1 class="baner">Proximos eventos!</h1>
+          <!-- <h1 class="baner"></h1> -->
           <h1 >{{race.name}}</h1>
           <p>{{race.date}}</p>
           <p>{{race.circuit}}</p>
@@ -85,8 +85,8 @@
 
 
 
-<ngb-accordion #acc="ngbAccordion">
-  <ngb-panel id="toggle-1" title="Carreras Abiertas">
+<ngb-accordion #acc="ngbAccordion" *ngIf="flag">
+  <ngb-panel id="toggle-1" title="Carreras Abiertas ">
     <ng-template ngbPanelContent>
       <div class="tabla" >
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -302,7 +302,7 @@
   </ngb-panel>
 </ngb-accordion>
 
-<div class="agregar">
+<div class="agregar" *ngIf="flag">
   <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Agregar Evento</h4>

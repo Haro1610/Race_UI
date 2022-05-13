@@ -18,6 +18,7 @@ export class CircuitsComponent implements OnInit {
   displayedColumns: string[] = [ 'name','address','circuit_distance','phone_number','editar','eliminar'];
   dataSource: Circuits[] = [];
   form: FormGroup;
+  flag : boolean = false;
   
 
   //public circuits: string = '';
@@ -50,6 +51,10 @@ export class CircuitsComponent implements OnInit {
 
   ngOnInit(): void {
     this.refresh();
+    if(localStorage.getItem('level') === 'admin'){
+      this.flag = !this.flag;
+
+    }
   }
 
   open(content: any) {
