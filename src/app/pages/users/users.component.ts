@@ -45,7 +45,8 @@ export class UsersComponent implements OnInit {
       email: [],
       password: [],
       number: [],
-      imagen: []
+      imagen: [],
+      level: []
     }
     );
   }
@@ -83,14 +84,14 @@ export class UsersComponent implements OnInit {
 
   sendData(its_new:boolean){
     if(this.form.valid){
-      const {password,username,email,number,picture} = this.form.getRawValue()
+      const {password,username,email,number,picture,level} = this.form.getRawValue()
       if(its_new){
         console.log("creando usuario")
-        this.create(username,email,password,number,picture)
+        this.create(username,email,password,number,picture,level)
       }
       else{
         console.log("updateando:")
-        this.update(username,email,password,number,picture);
+        this.update(username,email,password,number,picture,level);
       }
       console.log(its_new)
       this.refresh();
@@ -100,16 +101,16 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  update(username:string, email:string, password:string, number:number, picture:string){
-      this.UsersService.updateUser(username,email,password,number,picture).subscribe( a => {
+  update(username:string, email:string, password:string, number:number, picture:string,level:string){
+      this.UsersService.updateUser(username,email,password,number,picture,level).subscribe( a => {
         console.log(a);
         this.refresh()
       });
   }
 
-  create(username:string, email:string, password:string, number:number, picture:string){
+  create(username:string, email:string, password:string, number:number, picture:string,level:string){
     console.log(username,email,password,number,picture);
-    this.UsersService.createUser(username,email,password,number,picture).subscribe( a => {
+    this.UsersService.createUser(username,email,password,number,picture,level).subscribe( a => {
       console.log(a);
       this.refresh()
     });

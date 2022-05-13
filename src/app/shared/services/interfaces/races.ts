@@ -7,5 +7,6 @@ export interface Races{
     drivers: string[],
     capacity: number,
     status: string,
-    disponibilidad:number
+    disponibilidad:number,
+    image:string
 }
