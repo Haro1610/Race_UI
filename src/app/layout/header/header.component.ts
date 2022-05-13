@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginComponent } from 'src/app/pages/login/login.component';
 
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 @Component({
@@ -10,7 +9,7 @@ import { AuthServiceService } from 'src/app/shared/services/auth-service.service
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router,private auth : AuthServiceService,private log:LoginComponent) { }
+  constructor(private router: Router,private auth : AuthServiceService) { }
 //    autorizacion: string = '' ;
 flag : boolean = false;
 
