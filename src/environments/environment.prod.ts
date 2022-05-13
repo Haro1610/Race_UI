@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  oogleId: '402060880190-hce6bc8gl31jgi9f8vava68h2ep0suf8.apps.googleusercontent.com',
+  googleId: '402060880190-hce6bc8gl31jgi9f8vava68h2ep0suf8.apps.googleusercontent.com',
+  api: 'https://karting-gdl.herokuapp.com',
   firebaseConfig : {
     apiKey: "AIzaSyCeXasLZzQYJYmqstVv7UtwJXRZ6WCxIRA",
     authDomain: "karts-racing.firebaseapp.com",
