@@ -13,7 +13,7 @@ export class RacesService {
 
   getRaces(): Observable<Races[]>{
     console.log("preparando el get")
-    const url = 'http://localhost:3000/api/races';
+    const url = 'https://karting-gdl.herokuapp.com/api/races';
     console.log(this.httpClient.get<Races[]>(url))
     return this.httpClient.get<Races[]>(url);
   }
@@ -21,12 +21,12 @@ export class RacesService {
   
   deleteRace(id: string): Observable<Races>{
     console.log("preparando para eliminar"+ id);
-    const url = 'http://localhost:3000/api/races/'+id;
+    const url = 'https://karting-gdl.herokuapp.com/api/races/'+id;
     return this.httpClient.delete<Races>(url);
   }
   
   updateRace(id:string,name: string,number_of_laps: number,date: string,circuit:string,capacity: number,image:string): Observable<Races>{
-    const url = 'http://localhost:3000/api/races/';
+    const url = 'https://karting-gdl.herokuapp.com/api/races/';
     return this.httpClient.put<Races>(url,
       {_id:id,
         name:name,
@@ -39,7 +39,7 @@ export class RacesService {
   } 
 
   createRace(name: string,number_of_laps: number,date: string,circuit:string,capacity: number,image:string): Observable<Races>{
-    const url = 'http://localhost:3000/api/races/';
+    const url = 'https://karting-gdl.herokuapp.com/api/races/';
     return this.httpClient.post<Races>(url,
       {name:name,
       number_of_laps:number_of_laps,
@@ -51,7 +51,7 @@ export class RacesService {
   }
 
   joinRace(id:string){
-    const url = 'http://localhost:3000/api/races/'+id;
+    const url = 'https://karting-gdl.herokuapp.com/api/races/'+id;
     console.log(url)
     return this.httpClient.put<Races>(url,{
       username:localStorage.getItem('username')
@@ -59,7 +59,7 @@ export class RacesService {
   }
   
   leftRace(id:string){
-    const url = 'http://localhost:3000/api/races/'+id;
+    const url = 'https://karting-gdl.herokuapp.com/api/races/'+id;
     console.log(url)
     return this.httpClient.post<Races>(url,{
       username:localStorage.getItem('username')

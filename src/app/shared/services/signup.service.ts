@@ -12,7 +12,7 @@ export class SignupService {
   constructor(private httpClient:HttpClient) { }
 
   Sign_up(username:string,email: string, password: string): Observable<any>{
-    const url = 'http://localhost:3000/api/users/';
+    const url = 'https://karting-gdl.herokuapp.com/api/users/';
     return this.httpClient.post<any>(url,{username: username, email:email,password: password});
   }
 }
