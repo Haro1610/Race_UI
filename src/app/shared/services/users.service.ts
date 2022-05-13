@@ -13,19 +13,19 @@ export class UsersService {
 
   getUsers(): Observable<Users[]>{
     console.log("preparando el get")
-    const url = 'http://localhost:3000/api/users';
+    const url = 'https://karting-gdl.herokuapp.com//api/users';
     console.log(this.httpClient.get<Users[]>(url))
     return this.httpClient.get<Users[]>(url);
   }
 
   deleteUser(email: string): Observable<Users>{
     console.log("preparando para eliminar");
-    const url = 'http://localhost:3000/api/users/'+email;
+    const url = 'https://karting-gdl.herokuapp.com//api/users/'+email;
     return this.httpClient.delete<Users>(url);
   } 
   updateUser(id:string,username:string, email:string, password:string, number:number, image:string,level: string): Observable<Users>{
     console.log(username,email,password,number,image,level)
-    const url = 'http://localhost:3000/api/users/';
+    const url = 'https://karting-gdl.herokuapp.com/api/users/';
     return this.httpClient.put<Users>(url,
       {_id:id,
       username:username,
@@ -37,7 +37,7 @@ export class UsersService {
     });
   } 
   createUser(username:string, email:string, password:string, number:number, image:string,level:string): Observable<Users>{
-    const url = 'http://localhost:3000/api/users/';
+    const url = 'https://karting-gdl.herokuapp.com/api/users/';
     return this.httpClient.post<Users>(url,
       {username:username,
       email:email,

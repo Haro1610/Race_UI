@@ -12,7 +12,7 @@ export class RaceResultsService {
   constructor(private httpClient: HttpClient) { }
 
   getResults(id: string): Observable<RaceResults>{
-    const url = 'http://localhost:3000/api/race_results/'+id;
+    const url = 'https://karting-gdl.herokuapp.com/api/race_results/'+id;
     console.log(url)
     console.log(this.httpClient.get<RaceResults>(url))
     return this.httpClient.get<RaceResults>(url);

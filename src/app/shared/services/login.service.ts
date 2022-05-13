@@ -23,12 +23,12 @@ export class LoginService {
 
   
   DBLogIn(email: string, password: string): Observable<any>{
-    const url = 'http://localhost:3000/api/Login/';
+    const url = 'https://karting-gdl.herokuapp.com/api/Login/';
     return this.httpClient.post<any>(url,{email: email, password: password});
   }
 
   validateGoogleLogIn(token:string){
-    const url = 'http://localhost:3000/api/Login/';
+    const url = 'https://karting-gdl.herokuapp.com/api/Login/';
     return this.httpClient.put<any>(url,{idToken: token});  
   }
 
