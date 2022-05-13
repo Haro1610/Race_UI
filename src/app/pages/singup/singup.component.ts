@@ -50,7 +50,7 @@ export class SingupComponent implements OnInit {
         console.log("Registrando nuevo usuario")
         console.log(res)
         //console.log(a)
-        this.auth.save(res.token,email,res.username)
+        this.auth.save(res.token,email,res.username,"user")
         this.router.navigate(['/races']);
       });
 

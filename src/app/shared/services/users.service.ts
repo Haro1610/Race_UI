@@ -23,10 +23,12 @@ export class UsersService {
     const url = 'http://localhost:3000/api/users/'+email;
     return this.httpClient.delete<Users>(url);
   } 
-  updateUser(username:string, email:string, password:string, number:number, image:string,level: string): Observable<Users>{
+  updateUser(id:string,username:string, email:string, password:string, number:number, image:string,level: string): Observable<Users>{
+    console.log(username,email,password,number,image,level)
     const url = 'http://localhost:3000/api/users/';
     return this.httpClient.put<Users>(url,
-      {username:username,
+      {_id:id,
+      username:username,
       email:email,
       password: password,
       number:number,

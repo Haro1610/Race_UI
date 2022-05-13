@@ -82,18 +82,17 @@ export class UsersComponent implements OnInit {
     })
   }
 
-  sendData(its_new:boolean){
+  sendData(id:string){
     if(this.form.valid){
       const {password,username,email,number,picture,level} = this.form.getRawValue()
-      if(its_new){
+      if(!id){
         console.log("creando usuario")
         this.create(username,email,password,number,picture,level)
       }
       else{
         console.log("updateando:")
-        this.update(username,email,password,number,picture,level);
+        this.update(id,username,email,password,number,picture,level);
       }
-      console.log(its_new)
       this.refresh();
       } 
       else{
@@ -101,8 +100,8 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  update(username:string, email:string, password:string, number:number, picture:string,level:string){
-      this.UsersService.updateUser(username,email,password,number,picture,level).subscribe( a => {
+  update(id:string,username:string, email:string, password:string, number:number, picture:string,level:string){
+      this.UsersService.updateUser(id,username,email,password,number,picture,level).subscribe( a => {
         console.log(a);
         this.refresh()
       });

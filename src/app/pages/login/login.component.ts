@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.socialAuth.authState.subscribe((user) => {
       console.log(user)
-      this.authService.save(user.idToken,user.email,user.name)
+      this.authService.save(user.idToken,user.email,user.name,'user')
       this.loginService.validateGoogleLogIn(this.authService.get()).subscribe(res => {
         console.log(res);
       })
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.loginService.DBLogIn(this.email,this.password).subscribe( res => {
         console.log("iniciando sesion")
         console.log(res.data.user)
-        this.authService.save(res.data.user.token,this.email,res.data.user.username)
+        this.authService.save(res.data.user.token,this.email,res.data.user.username,res.data.user.level)
         this.router.navigate(['/races']);
       });
 

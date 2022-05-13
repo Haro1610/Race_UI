@@ -94,18 +94,21 @@ export class RacesComponent implements OnInit {
       console.log(a)
       this.refresh();
     });
+    this.refresh();
   }
 
   create(name:string,number_of_laps:number,date:string,circuit:string,capacity:number,image:string){
     console.log(name,number_of_laps,date,circuit,capacity);
     this.racesService.createRace(name,number_of_laps,date,circuit,capacity,image).subscribe( a => {
       console.log(a);
+      this.refresh();
     });
     this.refresh()
   }
 
   update(id:string,name:string,number_of_laps:number,date:string,circuit:string,capacity:number, image:string){
     this.racesService.updateRace(id,name,number_of_laps,date,circuit,capacity,image).subscribe( a => {
+      this.refresh();
       console.log(a);
     });
     this.refresh()
@@ -128,6 +131,10 @@ export class RacesComponent implements OnInit {
       this.refresh()
     });
     this.refresh()
+    this.refresh();
+    this.refresh();
+    this.refresh();
+    this.refresh();
   }
   
 
