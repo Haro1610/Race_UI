@@ -1,13 +1,13 @@
 <mat-toolbar color="warn">
   <mat-toolbar-row>
-    <span class="span">Users</span>
+    <span class="span">Users Only for admmis</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 
 
 
-<div class="tabla">
+<div class="tabla" *ngIf="flag">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     
@@ -105,7 +105,7 @@
 
 
 
-    <div class="agregar">
+    <div class="agregar" *ngIf="flag">
       <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
         <div class="modal-header">
           <h4 class="modal-title" id="modal-basic-title">Agregar usuario</h4>
@@ -151,8 +151,7 @@
 
     
     <input type="file" accept=".png ,.jpg,.jpegm.bmp,.gif" (change)="cargarImagen($event)" id="inputImage">
-    <label for="inputImage" class="labelInputFile">Subir imagenes</label>
-    <img src=""  alt="">
+    <label for="inputImage" class="labelInputFile" *ngIf="flag">Subir imagenes</label>
 
     <!-- <div class="example-flex-container">
       <div class="example-button-container">

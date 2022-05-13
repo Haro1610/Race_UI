@@ -24,13 +24,15 @@ export class RacesComponent implements OnInit {
 
   displayedColumns: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity','status','editar','eliminar'];
   displayed: string[] = [ 'event', 'date', 'pista','laps','drivers','capacity','status','editar','eliminar'];
-  
+  nivel = localStorage.getItem('level');
   dataSource: Races[] = [];
   closed_events: Races[] = [];
   user_events: Races[] = [];
   private current_race: string = '';
   private hoy: Date = new Date();
   form: FormGroup;
+  flag : boolean = false;
+  //private nivel: string = 
   
 
   constructor(private racesService: RacesService,private auth: AuthServiceService, 
@@ -48,6 +50,8 @@ export class RacesComponent implements OnInit {
       image:[]
     }
     );
+    //this.getLevel();
+    //this.userIsAdmin();
   }
   
   stringToDate(fecha:string)
@@ -82,6 +86,13 @@ export class RacesComponent implements OnInit {
 
   ngOnInit(): void {
     this.refresh();
+
+    if(localStorage.getItem('level') === 'admin'){
+      this.flag = !this.flag;
+
+    }
+        
+    
   }
 
   open(content: any) {
@@ -100,7 +111,7 @@ export class RacesComponent implements OnInit {
   create(name:string,number_of_laps:number,date:string,circuit:string,capacity:number,image:string){
     console.log(name,number_of_laps,date,circuit,capacity);
     this.racesService.createRace(name,number_of_laps,date,circuit,capacity,image).subscribe( a => {
-      console.log(a);
+      //console.log(a);
       this.refresh();
     });
     this.refresh()
@@ -109,7 +120,7 @@ export class RacesComponent implements OnInit {
   update(id:string,name:string,number_of_laps:number,date:string,circuit:string,capacity:number, image:string){
     this.racesService.updateRace(id,name,number_of_laps,date,circuit,capacity,image).subscribe( a => {
       this.refresh();
-      console.log(a);
+      //console.log(a);
     });
     this.refresh()
   }
@@ -142,16 +153,16 @@ export class RacesComponent implements OnInit {
     console.log(id)
     if(this.form.valid){
       const {name,number_of_laps,date,circuit,capacity,image} = this.form.getRawValue()
-      console.log("viendo que nos dieron");
-      console.log( this.form.getRawValue())
+      //console.log("viendo que nos dieron");
+      //console.log( this.form.getRawValue())
       if(!id){
-        console.log("creando carrera")
-        console.log(name,number_of_laps,date,circuit,capacity,image)
+        //console.log("creando carrera")
+        //console.log(name,number_of_laps,date,circuit,capacity,image)
         this.create(name,number_of_laps,date,circuit,capacity,image)
       }
       else{
-        console.log("updateando:")
-        console.log(id,name,number_of_laps,date,circuit,capacity,image)
+        //console.log("updateando:")
+        //console.log(id,name,number_of_laps,date,circuit,capacity,image)
         this.update(id,name,number_of_laps,date,circuit,capacity,image);
       }
       this.refresh();
@@ -160,5 +171,15 @@ export class RacesComponent implements OnInit {
       console.log('Error, faltan datos',this.form);
     }
   }
+
+//   getLevel(){
+    
+//     if(localStorage.getItem('level') === 'admin'){
+//       this.flag = !this.flag;
+
+//     }
+//     //let nivel = console.log(localStorage.getItem('level'));
+//   //   return nivel;
+// }
 
 }

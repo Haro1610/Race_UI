@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginComponent } from 'src/app/pages/login/login.component';
 
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 @Component({
@@ -9,10 +10,17 @@ import { AuthServiceService } from 'src/app/shared/services/auth-service.service
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router,private auth : AuthServiceService) { }
+  constructor(private router: Router,private auth : AuthServiceService,private log:LoginComponent) { }
 //    autorizacion: string = '' ;
+flag : boolean = false;
+
+
   
   ngOnInit(): void {
+    if(localStorage.getItem('level') === 'admin'){
+      this.flag = !this.flag;
+
+    }
   }
 
   LogOut(): void {

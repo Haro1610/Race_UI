@@ -85,8 +85,8 @@
 
 
 
-<ngb-accordion #acc="ngbAccordion">
-  <ngb-panel id="toggle-1" title="Carreras Abiertas">
+<ngb-accordion #acc="ngbAccordion" *ngIf="flag">
+  <ngb-panel id="toggle-1" title="Carreras Abiertas ">
     <ng-template ngbPanelContent>
       <div class="tabla" >
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -302,7 +302,7 @@
   </ngb-panel>
 </ngb-accordion>
 
-<div class="agregar">
+<div class="agregar" *ngIf="flag">
   <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Agregar Evento</h4>
