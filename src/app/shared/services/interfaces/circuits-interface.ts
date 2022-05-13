@@ -4,5 +4,6 @@ export interface Circuits {
     description: string,
     address: string,
     phone_number: string,
-    circuit_distance: string
+    circuit_distance: string,
+    image:string
 }

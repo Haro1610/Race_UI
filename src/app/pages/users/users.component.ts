@@ -6,6 +6,7 @@ import { Users } from 'src/app/shared/services/interfaces/users';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-users',
@@ -30,10 +31,13 @@ export class UsersComponent implements OnInit {
   dataSource: Users[] = [];
   public email : string = '';
   form: FormGroup;
+  flag : boolean = false;
+
+  
 
   constructor(private Router : ActivatedRoute, private UsersService : UsersService,
     private auth: AuthServiceService, private router: Router,config: NgbModalConfig, 
-    private modalService: NgbModal,private formBuilder: FormBuilder) { 
+    private modalService: NgbModal,private formBuilder: FormBuilder,private storageService:StorageService) { 
     if (!auth.get()){
       this.router.navigate(['/home']);
     } 
@@ -44,7 +48,8 @@ export class UsersComponent implements OnInit {
       email: [],
       password: [],
       number: [],
-      imagen: []
+      imagen: [],
+      level: []
     }
     );
   }
@@ -53,7 +58,11 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
 
       this.refresh();
-      console.log(this.dataSource)
+      if(localStorage.getItem('level') === 'admin'){
+        this.flag = !this.flag;
+      }
+
+      //console.log(this.dataSource)
     
   }
 
@@ -80,18 +89,17 @@ export class UsersComponent implements OnInit {
     })
   }
 
-  sendData(its_new:boolean){
+  sendData(id:string){
     if(this.form.valid){
-      const {password,username,email,number,picture} = this.form.getRawValue()
-      if(its_new){
+      const {password,username,email,number,picture,level} = this.form.getRawValue()
+      if(!id){
         console.log("creando usuario")
-        this.create(username,email,password,number,picture)
+        this.create(username,email,password,number,picture,level)
       }
       else{
         console.log("updateando:")
-        this.update(username,email,password,number,picture);
+        this.update(id,username,email,password,number,picture,level);
       }
-      console.log(its_new)
       this.refresh();
       } 
       else{
@@ -99,19 +107,41 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  update(username:string, email:string, password:string, number:number, picture:string){
-      this.UsersService.updateUser(username,email,password,number,picture).subscribe( a => {
+  update(id:string,username:string, email:string, password:string, number:number, picture:string,level:string){
+      this.UsersService.updateUser(id,username,email,password,number,picture,level).subscribe( a => {
         console.log(a);
         this.refresh()
       });
   }
 
-  create(username:string, email:string, password:string, number:number, picture:string){
+  create(username:string, email:string, password:string, number:number, picture:string,level:string){
     console.log(username,email,password,number,picture);
-    this.UsersService.createUser(username,email,password,number,picture).subscribe( a => {
+    this.UsersService.createUser(username,email,password,number,picture,level).subscribe( a => {
       console.log(a);
       this.refresh()
     });
+  }
+
+  imagenes: any[]=[];
+  cargarImagen(event:any){
+    let image = event.target.files;
+    let reader = new FileReader();
+    const username = this.form.getRawValue()
+
+    reader.readAsDataURL(image[0]);
+    reader.onloadend= () => {
+      console.log(reader.result);
+      this.imagenes.push(reader.result);
+      this.storageService.subirImagen(username+"_"+Date.now(),reader.result).then(urlImage =>{
+        console.log(urlImage);
+        return urlImage;
+      });
+
+
+    }
+
+
+
   }
 
 }

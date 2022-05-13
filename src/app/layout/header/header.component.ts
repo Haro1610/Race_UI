@@ -11,8 +11,15 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router,private auth : AuthServiceService) { }
 //    autorizacion: string = '' ;
+flag : boolean = false;
+
+
   
   ngOnInit(): void {
+    if(localStorage.getItem('level') === 'admin'){
+      this.flag = !this.flag;
+
+    }
   }
 
   LogOut(): void {

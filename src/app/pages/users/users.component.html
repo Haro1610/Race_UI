@@ -1,13 +1,13 @@
 <mat-toolbar color="warn">
   <mat-toolbar-row>
-    <span class="span">Users</span>
+    <span class="span">Users Only for admmis</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 
 
 
-<div class="tabla">
+<div class="tabla" *ngIf="flag">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     
@@ -49,7 +49,7 @@
             <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
           </div>
           <div class="modal-body">
-            <form [formGroup]= "form" (submit)="sendData(false)" >
+            <form [formGroup]= "form" (submit)="sendData(element._id)" >
 
               <mat-form-field appearance="fill">
                 <mat-label>Editar nombre</mat-label>
@@ -78,7 +78,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-outline-success" (click)="sendData(false)">Save</button>
+              <button type="button" class="btn btn-outline-success" (click)="sendData(element._id)">Save</button>
             </div>
           </ng-template>   
           <button class="btn btn-lg btn-outline-warning" (click)="open(content)">Editar informacion</button>    
@@ -105,14 +105,14 @@
 
 
 
-    <div class="agregar">
+    <div class="agregar" *ngIf="flag">
       <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
         <div class="modal-header">
           <h4 class="modal-title" id="modal-basic-title">Agregar usuario</h4>
           <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
         </div>
         <div class="modal-body">
-          <form [formGroup]= "form" (submit)="sendData(true)" >
+          <form [formGroup]= "form" (submit)="sendData('')" >
   
             <mat-form-field appearance="fill">
               <mat-label>Nombre</mat-label>
@@ -141,14 +141,42 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-success" (click)="sendData(true)">Save</button>
+            <button type="button" class="btn btn-outline-success" (click)="sendData('')">Save</button>
           </div>
         </ng-template>
         <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" class="add" (click)="open(content)">
           <mat-icon>add</mat-icon>
         </button>
     </div>
-      
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <input type="file" accept=".png ,.jpg,.jpegm.bmp,.gif" (change)="cargarImagen($event)" id="inputImage">
+    <label for="inputImage" class="labelInputFile" *ngIf="flag">Subir imagenes</label>
+
+    <!-- <div class="example-flex-container">
+      <div class="example-button-container">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" >
+          <mat-icon matInput type="file">  add_photo_alternate</mat-icon>
+        </button>
+      </div>
+       -->
 
 
 

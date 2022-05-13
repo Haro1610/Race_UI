@@ -18,6 +18,7 @@ export class CircuitsComponent implements OnInit {
   displayedColumns: string[] = [ 'name','address','circuit_distance','phone_number','editar','eliminar'];
   dataSource: Circuits[] = [];
   form: FormGroup;
+  flag : boolean = false;
   
 
   //public circuits: string = '';
@@ -35,7 +36,8 @@ export class CircuitsComponent implements OnInit {
       distance:[],
       description:[],
       circuit_distance:[],
-      phone_number:[]
+      phone_number:[],
+      image:[]
     }
     ); 
   }
@@ -49,6 +51,10 @@ export class CircuitsComponent implements OnInit {
 
   ngOnInit(): void {
     this.refresh();
+    if(localStorage.getItem('level') === 'admin'){
+      this.flag = !this.flag;
+
+    }
   }
 
   open(content: any) {
@@ -66,16 +72,16 @@ export class CircuitsComponent implements OnInit {
   
   sendData(id:string){
     if(this.form.valid){
-      const {name, description, address, phone_number, circuit_distance} = this.form.getRawValue()
+      const {name, description, address, phone_number, circuit_distance,image} = this.form.getRawValue()
       if(!id){
         console.log("creando circuito")
-        console.log(name, description, address, phone_number, circuit_distance)
-        this.create(name, description, address, phone_number, circuit_distance)
+        console.log(name, description, address, phone_number, circuit_distance,image)
+        this.create(name, description, address, phone_number, circuit_distance,image)
       }
       else{
         console.log("updateando:")
-        console.log(name, description, address, phone_number, circuit_distance)
-        this.update(id,name, description, address, phone_number, circuit_distance);
+        console.log(name, description, address, phone_number, circuit_distance,image)
+        this.update(id,name, description, address, phone_number, circuit_distance,image);
       }
       this.refresh();
       } 
@@ -84,15 +90,15 @@ export class CircuitsComponent implements OnInit {
     }
   }
 
-  update(id:string,name:string, description:string, address:string, phone_number:number, circuit_distance:string){
-    this.circuitsService.updateCircuit(id,name, description, address, phone_number, circuit_distance).subscribe( a => {
+  update(id:string,name:string, description:string, address:string, phone_number:number, circuit_distance:string,image:string){
+    this.circuitsService.updateCircuit(id,name, description, address, phone_number, circuit_distance,image).subscribe( a => {
       console.log(a);
       this.refresh()
     });
 }
 
-  create(name:string, description:string, address:string, phone_number:number, circuit_distance:string){
-    this.circuitsService.createCircuit(name, description, address, phone_number, circuit_distance).subscribe( a => {
+  create(name:string, description:string, address:string, phone_number:number, circuit_distance:string,image:string){
+    this.circuitsService.createCircuit(name, description, address, phone_number, circuit_distance,image).subscribe( a => {
       console.log(a);
       this.refresh()
     });

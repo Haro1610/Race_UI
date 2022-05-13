@@ -4,5 +4,6 @@ export interface Users {
     email: string,
     password: string,
     picture: string,
-    number: number
+    number: number,
+    level:string
 }
